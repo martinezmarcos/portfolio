@@ -1,5 +1,6 @@
 import { otherProjects } from "@/lib/data";
 import { Reveal } from "@/components/ui/Reveal";
+import { UnderlineLink } from "@/components/ui/UnderlineLink";
 
 export function OtherProjects() {
   return (
@@ -23,6 +24,16 @@ export function OtherProjects() {
                 <p className="mt-3 text-sm leading-relaxed text-ink-muted">
                   {project.description}
                 </p>
+                {project.link && (
+                  <UnderlineLink
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.15em] text-ink"
+                  >
+                    View on GitHub →
+                  </UnderlineLink>
+                )}
               </div>
 
               <div className="flex flex-wrap content-start gap-x-3 gap-y-2 font-mono text-xs text-ink-muted sm:col-span-4">

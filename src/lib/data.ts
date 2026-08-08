@@ -40,21 +40,32 @@ export type OtherProject = {
   title: string;
   description: string;
   stack: string[];
+  link: string;
 };
 
-// Placeholders — replace with real projects (code + link live on GitHub).
 // Keep at least 2 here so the Work section shows 3 projects total
 // alongside the featured SaaS.
 export const otherProjects: OtherProject[] = [
   {
-    title: "[ADD PROJECT NAME]",
-    description: "[ADD PROJECT DESCRIPTION — what it does and what problem it solves]",
-    stack: ["[ADD STACK]"],
+    title: "Cancha Directa",
+    description:
+      "Booking platform for courts, rooms and desks that eliminates double-booking with an atomic lock (Redis SET NX PX) backed by a Postgres EXCLUDE constraint as a data-level backstop. Multi-tenant with owner/customer roles, a public calendar with a 3-minute hold and countdown, and a live simulator running 50 concurrent booking requests to prove only one ever wins the lock.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Supabase Auth",
+      "Redis (Upstash)",
+      "Vitest",
+    ],
+    link: "https://github.com/martinezmarcos/cancha-directa",
   },
   {
     title: "[ADD PROJECT NAME]",
     description: "[ADD PROJECT DESCRIPTION — what it does and what problem it solves]",
     stack: ["[ADD STACK]"],
+    link: "",
   },
 ];
 
