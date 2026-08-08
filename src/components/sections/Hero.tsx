@@ -24,8 +24,8 @@ export function Hero() {
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-muted sm:text-xl">
             I design and maintain a multi-tenant SaaS platform for furniture
             manufacturers — handling inventory, orders and role-based access
-            for two companies in daily production use. Currently studying
-            Analista de Sistemas while shipping real products.
+            for two companies in daily production use. Currently studying to
+            become a System Analyst while shipping real products.
           </p>
         </Reveal>
 

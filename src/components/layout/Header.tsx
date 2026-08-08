@@ -14,7 +14,7 @@ export function Header() {
           className="font-mono text-sm font-medium tracking-tight text-ink"
           onClick={() => setOpen(false)}
         >
-          {siteConfig.shortName}
+          {siteConfig.name}
         </a>
 
         <nav className="hidden items-center gap-8 sm:flex">

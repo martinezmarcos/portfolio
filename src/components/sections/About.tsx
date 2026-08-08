@@ -2,7 +2,7 @@ import { Kicker } from "@/components/ui/Kicker";
 import { Reveal } from "@/components/ui/Reveal";
 
 const paragraphs = [
-  "I'm a full stack developer based in Argentina, working mainly with React, Next.js, Node.js and PostgreSQL/Supabase. I'm technically trained — Técnico en Informática — and currently studying Analista de Sistemas, but most of what I know comes from building and maintaining software that has to keep working after I ship it.",
+  "I'm a full stack developer based in Argentina, working mainly with React, Next.js, Node.js and PostgreSQL/Supabase. I'm technically trained — a Computer Science Technician — and currently studying to become a System Analyst, but most of what I know comes from building and maintaining software that has to keep working after I ship it.",
   "My main project is a SaaS platform for furniture manufacturing businesses. It isn't a demo sitting in a personal repo — it's software two companies use every day to manage their products, materials, inventory, orders and teams. Building something a stranger has to trust with their business is a different discipline than building something for a portfolio.",
   "I've also worked with C#, ASP.NET and Python, but my focus going forward is the JavaScript/TypeScript ecosystem: React on the front end, Node.js and PostgreSQL on the back end, deployed on Vercel.",
 ];

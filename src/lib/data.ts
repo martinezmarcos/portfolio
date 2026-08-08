@@ -36,30 +36,25 @@ export const featuredProject: FeaturedProject = {
   note: "Private B2B software. Code walkthrough and screenshots available on request.",
 };
 
-export type RoadmapProject = {
-  number: string;
+export type OtherProject = {
   title: string;
   description: string;
   stack: string[];
-  status: string;
 };
 
-export const roadmapProjects: RoadmapProject[] = [
+// Placeholders — replace with real projects (code + link live on GitHub).
+// Keep at least 2 here so the Work section shows 3 projects total
+// alongside the featured SaaS.
+export const otherProjects: OtherProject[] = [
   {
-    number: "01",
-    title: "Public REST API with Auth & Rate Limiting",
-    description:
-      "A standalone, documented REST API treated as the product itself — JWT + refresh tokens, revocable API keys, request rate limiting, versioned endpoints and published Swagger/Redoc docs.",
-    stack: ["Node.js", "Express", "PostgreSQL", "Redis"],
-    status: "Roadmap — 2026",
+    title: "[ADD PROJECT NAME]",
+    description: "[ADD PROJECT DESCRIPTION — what it does and what problem it solves]",
+    stack: ["[ADD STACK]"],
   },
   {
-    number: "02",
-    title: "RAG Assistant Over Technical Docs",
-    description:
-      "A chat interface that answers questions over a real document set with cited sources — chunking, embeddings and vector search, evaluated with honest retrieval-quality metrics instead of a generic chatbot wrapper.",
-    stack: ["Next.js", "Node.js", "pgvector", "OpenAI API"],
-    status: "Roadmap — 2026",
+    title: "[ADD PROJECT NAME]",
+    description: "[ADD PROJECT DESCRIPTION — what it does and what problem it solves]",
+    stack: ["[ADD STACK]"],
   },
 ];
 
@@ -85,20 +80,20 @@ export type TimelineItem = {
 
 export const timeline: TimelineItem[] = [
   {
-    date: "[ADD YEAR]",
-    title: "Técnico en Informática",
+    date: "2018 — 2024",
+    title: "Computer Science Technician",
     description:
       "Completed technical degree covering programming fundamentals, databases and systems.",
   },
   {
-    date: "[ADD YEAR] — Present",
+    date: "January 2025 — Present",
     title: "Furniture Business Management Platform",
     description:
       "Designing, building and maintaining the production SaaS now used daily by two furniture manufacturing businesses.",
   },
   {
-    date: "In progress",
-    title: "Analista de Sistemas",
+    date: "August 2025 — Present",
+    title: "System Analyst",
     description:
       "Continuing formal education in systems analysis alongside shipping production software.",
   },
