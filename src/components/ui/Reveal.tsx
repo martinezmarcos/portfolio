@@ -42,7 +42,10 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
       className={className}
       initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
       whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
+      // amount is low and margin extends the trigger zone below the
+      // viewport, so content finishes revealing before it's scrolled into
+      // view instead of staying at opacity:0 through a normal-speed scroll.
+      viewport={{ once: true, amount: 0.1, margin: "0px 0px -20% 0px" }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
