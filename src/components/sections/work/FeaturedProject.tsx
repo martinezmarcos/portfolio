@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { featuredProject } from "@/lib/data";
 import { Kicker } from "@/components/ui/Kicker";
 import { Reveal } from "@/components/ui/Reveal";
@@ -59,14 +60,17 @@ export function FeaturedProject() {
       </div>
 
       <div className="sm:col-span-5">
-        <Reveal delay={0.1} className="h-full">
-          <div className="flex h-full min-h-[22rem] flex-col justify-between border border-dashed border-line bg-paper-alt/60 p-6 sm:min-h-[28rem]">
-            <span className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-ink-muted">
-              Product screenshot
-            </span>
-            <span className="font-mono text-xs uppercase tracking-[0.15em] text-ink-muted">
-              [ADD SCREENSHOT]
-            </span>
+        <Reveal delay={0.1}>
+          <div className="border border-line">
+            <Image
+              src="/dashboard-preview.png"
+              alt="Furniture Business Management Platform dashboard — client and task names redacted for confidentiality"
+              width={1910}
+              height={854}
+              priority
+              className="h-auto w-full"
+              sizes="(min-width: 640px) 40vw, 100vw"
+            />
           </div>
           <p className="mt-4 font-mono text-xs italic text-ink-muted">{featuredProject.note}</p>
         </Reveal>

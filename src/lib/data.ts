@@ -33,7 +33,7 @@ export const featuredProject: FeaturedProject = {
   ],
   result:
     "In active daily use by two furniture manufacturing businesses — managing their real inventory, orders and teams.",
-  note: "Private B2B software. Code walkthrough and screenshots available on request.",
+  note: "Private B2B software — client and task names redacted for confidentiality.",
 };
 
 export type OtherProject = {
