@@ -37,16 +37,18 @@ type RevealProps = {
 export function Reveal({ children, className, delay = 0 }: RevealProps) {
   const shouldReduceMotion = usePrefersReducedMotion();
 
+  // Deliberately never hides content via opacity. `initial`/`whileInView`
+  // only animate position, so if JS never runs (blocked script, a browser
+  // extension interfering, IntersectionObserver failing for any reason) the
+  // text is still fully visible and readable — just without the slide-in.
+  // Content must never depend on JS succeeding to be visible.
   return (
     <motion.div
       className={className}
-      initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-      whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-      // amount is low and margin extends the trigger zone below the
-      // viewport, so content finishes revealing before it's scrolled into
-      // view instead of staying at opacity:0 through a normal-speed scroll.
+      initial={shouldReduceMotion ? undefined : { y: 16 }}
+      whileInView={shouldReduceMotion ? undefined : { y: 0 }}
       viewport={{ once: true, amount: 0.1, margin: "0px 0px -20% 0px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
