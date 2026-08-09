@@ -62,10 +62,19 @@ export const otherProjects: OtherProject[] = [
     link: "https://github.com/martinezmarcos/cancha-directa",
   },
   {
-    title: "[ADD PROJECT NAME]",
-    description: "[ADD PROJECT DESCRIPTION — what it does and what problem it solves]",
-    stack: ["[ADD STACK]"],
-    link: "",
+    title: "Claude Docs Navigator",
+    description:
+      "RAG assistant that answers questions about the Claude API strictly from Anthropic's own public docs, with every answer cited back to its source instead of drawn from the model's training data. Retrieval runs on pgvector cosine search over 1,200+ embedded chunks from 28 real doc pages, measured against a hand-verified 21-question eval set — 81% recall@5, not just eyeballed.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "pgvector",
+      "Claude API",
+      "Voyage AI",
+    ],
+    link: "https://github.com/martinezmarcos/RAG",
   },
 ];
 
