@@ -103,6 +103,12 @@ export const timeline: TimelineItem[] = [
       "Designing, building and maintaining the production SaaS now used daily by two furniture manufacturing businesses.",
   },
   {
+    date: "July — December 2025",
+    title: "AI Course, Samsung Innovation Campus",
+    description:
+      "155-hour Artificial Intelligence program — technical training plus employability skills, completed with over 90% attendance and an approved capstone project.",
+  },
+  {
     date: "August 2025 — Present",
     title: "System Analyst",
     description:
