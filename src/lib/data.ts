@@ -18,16 +18,16 @@ export const featuredProject: FeaturedProject = {
     "A multi-tenant web platform covering product and material catalogs, inventory tracking, client and order management, role-based user permissions, file storage for technical drawings, and business dashboards. Each company operates in its own isolated workspace inside the same codebase.",
   decisions:
     [
-      "Supabase (Postgres + Auth + Storage) as the backend, to move fast without giving up a real relational schema or row-level security.",
-      "Role-based permissions so office staff, production and admins each see only what their role needs — enforced at the database level, not just in the UI.",
+      "PostgreSQL (hosted on Supabase) with Prisma as the ORM and a custom JWT auth layer — the Supabase client-side key is locked down with Postgres Row Level Security, so only the Prisma backend can read or write data.",
+      "Role-based permissions so office staff, production and admins each see only what their role needs — enforced on every API endpoint, not just hidden in the UI.",
       "Workspace isolation resolved from the URL, so each company's data and sessions stay fully separate on one deployment.",
     ],
   stack: [
     "React",
     "JavaScript",
     "Node.js",
+    "Prisma",
     "PostgreSQL",
-    "Supabase Auth",
     "Supabase Storage",
     "Vercel",
   ],
@@ -76,8 +76,8 @@ export type SkillGroup = {
 
 export const skillGroups: SkillGroup[] = [
   { label: "Frontend", items: ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS"] },
-  { label: "Backend", items: ["Node.js", "Express", "REST APIs"] },
-  { label: "Data", items: ["PostgreSQL", "Supabase", "Supabase Auth", "Supabase Storage", "SQL"] },
+  { label: "Backend", items: ["Node.js", "REST APIs", "JWT Auth"] },
+  { label: "Data", items: ["PostgreSQL", "Prisma", "Supabase Auth", "Supabase Storage", "SQL"] },
   { label: "Tooling", items: ["Git", "GitHub", "Vercel"] },
 ];
 
