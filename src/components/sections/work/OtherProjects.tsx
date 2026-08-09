@@ -19,11 +19,18 @@ export function OtherProjects() {
                 {String(index + 2).padStart(2, "0")}
               </span>
 
-              <div className="sm:col-span-7">
+              <div className="sm:col-span-11">
                 <h4 className="text-xl font-medium leading-snug sm:text-2xl">{project.title}</h4>
-                <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
                   {project.description}
                 </p>
+
+                <div className="mt-4 flex flex-wrap gap-x-3 gap-y-2 font-mono text-xs text-ink-muted">
+                  {project.stack.map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
+                </div>
+
                 {project.link && (
                   <UnderlineLink
                     href={project.link}
@@ -34,12 +41,6 @@ export function OtherProjects() {
                     View on GitHub →
                   </UnderlineLink>
                 )}
-              </div>
-
-              <div className="flex flex-wrap content-start gap-x-3 gap-y-2 font-mono text-xs text-ink-muted sm:col-span-4">
-                {project.stack.map((tech) => (
-                  <span key={tech}>{tech}</span>
-                ))}
               </div>
             </div>
           </Reveal>
