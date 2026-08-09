@@ -74,7 +74,7 @@ export const otherProjects: OtherProject[] = [
       "Claude API",
       "Voyage AI",
     ],
-    link: "https://github.com/martinezmarcos/RAG",
+    link: "https://github.com/martinezmarcos/rag",
   },
 ];
 
