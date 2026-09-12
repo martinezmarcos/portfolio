@@ -36,16 +36,12 @@ export function Header() {
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="relative flex items-center justify-between rounded-full border border-white/[0.12] bg-zinc-950/85 px-4 py-2 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.85)] ring-1 ring-white/5 transition-all"
       >
-        {/* Left Monogram / Name with Status Dot */}
+        {/* Left Monogram / Name */}
         <a
           href="#top"
           onClick={(e) => handleSmoothScroll(e, "#top")}
-          className="group flex items-center gap-2.5 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+          className="group flex items-center transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
         >
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.9)]" />
-          </span>
           <span className="font-sans text-[13.5px] font-semibold tracking-tight text-white group-hover:text-zinc-200 transition-colors">
             Marcos Martinez
           </span>

@@ -29,11 +29,6 @@ export function Hero() {
             </span>
             <span className="text-zinc-600">/</span>
             <span>Buenos Aires, AR</span>
-            <span className="text-zinc-600">/</span>
-            <span className="flex items-center gap-1.5 text-emerald-400">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.9)]" />
-              <span>Available</span>
-            </span>
           </div>
         </Reveal>
 

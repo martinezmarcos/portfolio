@@ -291,12 +291,13 @@ export const technicalSkills: TechnicalSkillSection[] = [
   },
   {
     number: "05",
-    title: "Tooling & Compiled Workflow",
-    subtitle: "Developer experience, unit testing, and automated deployment",
+    title: "AI Workflows, Automation & Tooling",
+    subtitle: "Agentic terminal pipelines, custom Python bots, local LLMs, and compiled toolchains",
     items: [
-      { name: "Vercel & Edge", level: "Production", description: "Serverless edge networks, dynamic OG generation, static site generation" },
-      { name: "Testing Suites", level: "Production", description: "Vitest concurrent stress-tests, GoogleTest, automated test runners" },
-      { name: "Build & Systems Tools", level: "Daily", description: "Git, GitHub, CMake, Vite, ESLint 9, Turbopack" },
+      { name: "AI Automation & Agentic CLI", level: "Production", description: "Automated developer workflows, codebase auditing, and prompt pipelines using Claude CLI, OpenAI Codex, and local LLM orchestration via Ollama" },
+      { name: "Python Bots & Automation", level: "Production", description: "Event-driven bots, asynchronous scrapers, automated alerting, and multi-service data extraction pipelines in Python" },
+      { name: "Vercel & Edge Infrastructure", level: "Production", description: "Serverless edge networks, dynamic OG generation, zero-downtime CI/CD deployment" },
+      { name: "Compiled Systems Tooling", level: "Daily", description: "Git, GitHub Actions, CMake, Vitest concurrent suites, GoogleTest, ESLint 9, Turbopack" },
     ],
   },
 ];
