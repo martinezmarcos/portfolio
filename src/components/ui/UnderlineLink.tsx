@@ -20,7 +20,7 @@ export function UnderlineLink({ children, className = "", href, onClick, ...prop
     <a
       href={href}
       onClick={handleClick}
-      className={`relative inline-flex items-center gap-1.5 after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-white after:transition-[width] after:duration-300 after:ease-out hover:after:w-full ${className}`}
+      className={`relative inline-flex items-center gap-1.5 after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-zinc-950 after:transition-[width] after:duration-300 after:ease-out hover:after:w-full ${className}`}
       {...props}
     >
       {children}

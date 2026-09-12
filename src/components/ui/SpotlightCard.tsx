@@ -11,7 +11,7 @@ type SpotlightCardProps = {
 export function SpotlightCard({
   children,
   className = "",
-  spotlightColor = "rgba(255, 255, 255, 0.14)",
+  spotlightColor = "rgba(0, 0, 0, 0.035)",
 }: SpotlightCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -32,9 +32,9 @@ export function SpotlightCard({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`group relative overflow-hidden rounded-2xl border border-white/[0.1] bg-zinc-950/85 p-6 transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-black/70 ${className}`}
+      className={`group relative overflow-hidden rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm transition-all duration-300 hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-200/50 ${className}`}
     >
-      {/* Broad diffused ambient spotlight following the cursor */}
+      {/* Broad diffused ambient light following the cursor */}
       <div
         className="pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-300"
         style={{
@@ -43,12 +43,12 @@ export function SpotlightCard({
         }}
       />
 
-      {/* Intense inner focus light around the cursor */}
+      {/* Subtle inner focus light around the cursor */}
       <div
         className="pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-300"
         style={{
           opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(220px circle at ${position.x}px ${position.y}px, rgba(255, 255, 255, 0.1), transparent 70%)`,
+          background: `radial-gradient(220px circle at ${position.x}px ${position.y}px, rgba(0, 0, 0, 0.02), transparent 70%)`,
         }}
       />
 
@@ -57,7 +57,7 @@ export function SpotlightCard({
         className="pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-300"
         style={{
           opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(350px circle at ${position.x}px ${position.y}px, rgba(255, 255, 255, 0.35), transparent 70%)`,
+          background: `radial-gradient(350px circle at ${position.x}px ${position.y}px, rgba(0, 0, 0, 0.12), transparent 70%)`,
           mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           maskComposite: "exclude",
           WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",

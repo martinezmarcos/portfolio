@@ -74,11 +74,13 @@ const personJsonLd = {
   },
 };
 
+import { LanguageProvider } from "@/lib/language-context";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      lang="en"
-      className={`dark ${geistSans.variable} ${geistMono.variable}`}
+      lang="es"
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <head>
         <script
@@ -86,8 +88,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body className="bg-black text-zinc-100 antialiased selection:bg-white selection:text-black">
-        {children}
+      <body className="bg-white text-zinc-900 antialiased selection:bg-zinc-900 selection:text-white">
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

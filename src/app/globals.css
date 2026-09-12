@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --color-canvas: #000000;
-  --color-surface: #09090b;
-  --color-surface-hover: #121216;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(255, 255, 255, 0.22);
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #d4d4d8;
+  --color-canvas: #ffffff;
+  --color-surface: #f9fafb;
+  --color-surface-hover: #f3f4f6;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(0, 0, 0, 0.2);
+  --color-text-primary: #09090b;
+  --color-text-secondary: #3f3f46;
   --color-text-muted: #71717a;
 }
 
@@ -35,19 +35,19 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 6.5rem;
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
-    background-color: #000000;
-    color: #f4f4f5;
+    background-color: #ffffff;
+    color: #18181b;
     font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   }
 
   p {
     font-size: 1.03125rem; /* ~16.5px: subtly enlarged for superior reading comfort */
     line-height: 1.75;
-    color: #d4d4d8;
+    color: #3f3f46;
   }
 
   h1,
@@ -56,36 +56,36 @@
   h4 {
     letter-spacing: -0.03em;
     font-weight: 500;
-    color: #ffffff;
+    color: #09090b;
   }
 
   ::selection {
-    background: #ffffff;
-    color: #000000;
+    background: #09090b;
+    color: #ffffff;
   }
 
   :focus-visible {
-    outline: 1.5px solid #ffffff;
+    outline: 1.5px solid #09090b;
     outline-offset: 3px;
   }
 
-  /* Sleek minimalist scrollbar */
+  /* Sleek minimalist light scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #000000;
+    background: #ffffff;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #27272a;
+    background: #d4d4d8;
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #3f3f46;
+    background: #a1a1aa;
   }
 }
 
@@ -97,4 +97,3 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
