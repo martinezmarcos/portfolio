@@ -84,7 +84,7 @@ export function Contact() {
               <span>LinkedIn ↗</span>
             </motion.a>
             <span className="text-zinc-300">·</span>
-            <span className="text-zinc-500 lowercase">{c.location}</span>
+            <span className="text-zinc-500 font-sans">{c.location}</span>
           </div>
         </Reveal>
       </div>

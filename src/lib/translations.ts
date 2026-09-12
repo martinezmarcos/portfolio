@@ -216,9 +216,9 @@ export const translations: Record<Language, Translations> = {
         },
       ],
       metrics: [
-        { label: "Production Scope", value: "Daily", subtext: "Used by Multiple Companies" },
-        { label: "Business Modules", value: "14", subtext: "Cutting to Financials" },
-        { label: "Shop Floor Sync", value: "Live", subtext: "Real-time Tablet Queues" },
+        { label: "Architecture", value: "Multi-Tenant", subtext: "Active in production" },
+        { label: "Scope", value: "14 Modules", subtext: "End-to-end operations platform" },
+        { label: "Sync Engine", value: "Real-time", subtext: "Instant order & stock sync" },
       ],
       confidentiality:
         "Private enterprise system — client identities, operational metrics, and proprietary cutting jobs redacted for confidentiality.",
@@ -479,7 +479,7 @@ export const translations: Record<Language, Translations> = {
         "Open to Full Stack and Systems engineering roles where I can take ownership of critical backend architectures, distributed resilience, and real product decisions.",
       copyEmail: "Copy Email",
       copied: "Copied!",
-      location: "Argentina (UTC-3)",
+      location: "Buenos Aires, Argentina",
     },
     footer: {
       rights: "Engineered with Next.js 16 & Tailwind CSS v4",
@@ -488,10 +488,10 @@ export const translations: Record<Language, Translations> = {
   },
   es: {
     nav: {
-      work: "Destacado",
+      work: "Inicio",
       projects: "Proyectos",
-      skills: "Habilidades",
-      timeline: "Trayectoria",
+      skills: "Skills",
+      timeline: "Experiencia",
       about: "Sobre mí",
       contact: "Contacto",
       menu: "Menú",
@@ -557,9 +557,9 @@ export const translations: Record<Language, Translations> = {
         },
       ],
       metrics: [
-        { label: "Alcance en Producción", value: "Diario", subtext: "Uso Activo por Varias Empresas" },
-        { label: "Módulos de Negocio", value: "14", subtext: "De Corte a Finanzas" },
-        { label: "Sincronización de Planta", value: "En Vivo", subtext: "Colas en Tablets en Tiempo Real" },
+        { label: "Arquitectura", value: "Multi-Tenant", subtext: "En producción continua" },
+        { label: "Alcance", value: "14 Módulos", subtext: "Gestión integral de operaciones" },
+        { label: "Sincronización", value: "Tiempo Real", subtext: "Órdenes y stock al instante" },
       ],
       confidentiality:
         "Sistema empresarial privado — identidades de clientes y métricas operativas protegidas por confidencialidad.",
@@ -820,7 +820,7 @@ export const translations: Record<Language, Translations> = {
         "Disponible para roles de Full Stack y Systems Engineering donde pueda asumir la responsabilidad de arquitecturas críticas de backend, resiliencia distribuida y decisiones reales de producto.",
       copyEmail: "Copiar Email",
       copied: "¡Copiado!",
-      location: "Argentina (UTC-3)",
+      location: "Buenos Aires, Argentina",
     },
     footer: {
       rights: "Desarrollado con Next.js 16 & Tailwind CSS v4",

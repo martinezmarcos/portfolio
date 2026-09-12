@@ -29,28 +29,28 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-2xl">
+    <header className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl">
       {/* Floating Island Pill Navbar */}
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="relative flex items-center justify-between rounded-full border border-black/[0.08] bg-white/85 px-4 py-2 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.06)] ring-1 ring-black/5 transition-all"
+        className="relative flex items-center justify-between gap-3 sm:gap-4 rounded-full border border-black/[0.08] bg-white/90 px-3.5 py-1.5 sm:px-4 sm:py-2 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.06)] ring-1 ring-black/5 whitespace-nowrap"
       >
         {/* Left Monogram / Name */}
         <a
           href="#top"
           onClick={(e) => handleSmoothScroll(e, "#top")}
-          className="group flex items-center transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+          className="group flex items-center shrink-0 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
         >
           <span className="font-sans text-[13.5px] font-semibold tracking-tight text-zinc-950 group-hover:text-zinc-700 transition-colors">
             Marcos Martinez
           </span>
         </a>
 
-        {/* Center Proportional Sans-Serif Navigation Links */}
+        {/* Center Proportional Sans-Serif Navigation Links (md:flex ensures no cramping) */}
         <nav
-          className="hidden items-center gap-0.5 sm:flex"
+          className="hidden items-center gap-0.5 md:flex shrink-0 whitespace-nowrap"
           onMouseLeave={() => setHoveredIdx(null)}
         >
           {navItems.map((item, idx) => (
@@ -59,7 +59,7 @@ export function Header() {
               href={item.href}
               onClick={(e) => handleSmoothScroll(e, item.href)}
               onMouseEnter={() => setHoveredIdx(idx)}
-              className="relative rounded-full px-3 py-1 font-sans text-[13px] font-medium text-zinc-600 transition-colors hover:text-zinc-950"
+              className="relative rounded-full px-2.5 py-1 font-sans text-[13px] font-medium text-zinc-600 transition-colors hover:text-zinc-950 whitespace-nowrap"
             >
               {hoveredIdx === idx && (
                 <motion.span
@@ -74,13 +74,13 @@ export function Header() {
         </nav>
 
         {/* Right Stage: Language Switcher & Contact CTA */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0 whitespace-nowrap">
           {/* Language Switcher Button */}
           <button
             type="button"
             onClick={toggleLang}
             aria-label="Toggle language between Spanish and English"
-            className="flex items-center gap-1 rounded-full border border-black/10 bg-zinc-100/90 px-2.5 py-1 font-sans text-xs font-semibold text-zinc-800 transition-all hover:bg-zinc-200 active:scale-95"
+            className="flex items-center gap-1 rounded-full border border-black/10 bg-zinc-100/90 px-2.5 py-1 font-sans text-xs font-semibold text-zinc-800 transition-all hover:bg-zinc-200 active:scale-95 shrink-0 whitespace-nowrap"
           >
             <span className={lang === "es" ? "font-bold text-zinc-950" : "font-normal text-zinc-400"}>
               ES
@@ -96,7 +96,7 @@ export function Header() {
             onClick={(e) => handleSmoothScroll(e, "#contact")}
             whileHover={{ scale: 1.04, y: -0.5 }}
             whileTap={{ scale: 0.96 }}
-            className="group hidden items-center gap-1.5 rounded-full bg-zinc-950 px-3.5 py-1.5 font-sans text-[12px] font-semibold text-white transition-all hover:bg-zinc-800 sm:inline-flex"
+            className="group hidden items-center gap-1.5 rounded-full bg-zinc-950 px-3.5 py-1.5 font-sans text-[12px] font-semibold text-white transition-all hover:bg-zinc-800 sm:inline-flex shrink-0 whitespace-nowrap"
           >
             <span>{t.nav.contact}</span>
             <ArrowUpRight
@@ -105,11 +105,11 @@ export function Header() {
             />
           </motion.a>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle (visible on < md) */}
           <button
             type="button"
             onClick={() => setOpen((prev) => !prev)}
-            className="rounded-full border border-black/10 bg-zinc-100 px-3 py-1 font-sans text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-200 sm:hidden"
+            className="rounded-full border border-black/10 bg-zinc-100 px-3 py-1 font-sans text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-200 md:hidden shrink-0 whitespace-nowrap"
             aria-expanded={open}
             aria-controls="floating-mobile-menu"
           >
@@ -127,7 +127,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-2 overflow-hidden rounded-2xl border border-black/10 bg-white/95 p-4 backdrop-blur-2xl shadow-xl sm:hidden"
+            className="mt-2 overflow-hidden rounded-2xl border border-black/10 bg-white/95 p-4 backdrop-blur-2xl shadow-xl md:hidden"
           >
             <nav className="flex flex-col gap-1">
               {navItems.map((item) => (
