@@ -6,15 +6,12 @@ import { siteConfig } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/Reveal";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/icons";
+import { smoothScrollTo } from "@/lib/smooth-scroll";
 
 export function Hero() {
   const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const el = document.getElementById("projects");
-    if (el) {
-      const y = el.getBoundingClientRect().top + window.pageYOffset - 85;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
+    smoothScrollTo("#projects", 85);
   };
 
   return (

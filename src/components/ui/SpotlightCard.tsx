@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type ReactNode, type MouseEvent } from "react";
+import { useRef, useState, type ReactNode, type MouseEvent } from "react";
 
 type SpotlightCardProps = {
   children: ReactNode;
@@ -11,32 +11,62 @@ type SpotlightCardProps = {
 export function SpotlightCard({
   children,
   className = "",
-  spotlightColor = "rgba(255, 255, 255, 0.08)",
+  spotlightColor = "rgba(255, 255, 255, 0.14)",
 }: SpotlightCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    cardRef.current.style.setProperty("--mouse-x", `${x}px`);
-    cardRef.current.style.setProperty("--mouse-y", `${y}px`);
+    setPosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
   };
 
   return (
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className={`group relative overflow-hidden rounded-xl border border-white/[0.08] bg-zinc-950/70 p-6 transition-all duration-300 hover:border-white/20 hover:bg-zinc-900/40 ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`group relative overflow-hidden rounded-2xl border border-white/[0.1] bg-zinc-950/85 p-6 transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-black/70 ${className}`}
     >
-      {/* Radial spotlight effect following cursor */}
+      {/* Broad diffused ambient spotlight following the cursor */}
       <div
-        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-300"
         style={{
-          background: `radial-gradient(500px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), ${spotlightColor}, transparent 70%)`,
+          opacity: isHovered ? 1 : 0,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 65%)`,
         }}
       />
+
+      {/* Intense inner focus light around the cursor */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-300"
+        style={{
+          opacity: isHovered ? 1 : 0,
+          background: `radial-gradient(220px circle at ${position.x}px ${position.y}px, rgba(255, 255, 255, 0.1), transparent 70%)`,
+        }}
+      />
+
+      {/* Reactive cursor border illumination */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-300"
+        style={{
+          opacity: isHovered ? 1 : 0,
+          background: `radial-gradient(350px circle at ${position.x}px ${position.y}px, rgba(255, 255, 255, 0.35), transparent 70%)`,
+          mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          maskComposite: "exclude",
+          WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          WebkitMaskComposite: "xor",
+          padding: "1px",
+        }}
+      />
+
+      {/* Foreground Content */}
       <div className="relative z-10">{children}</div>
     </div>
   );

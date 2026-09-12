@@ -5,7 +5,7 @@ import { OtherProjects } from "@/components/sections/work/OtherProjects";
 
 export function Work() {
   return (
-    <section id="projects" className="border-b border-white/[0.08]">
+    <section id="projects" className="border-b border-white/[0.08] scroll-mt-28">
       <div className="mx-auto max-w-content px-6 py-24 sm:px-10 sm:py-32">
         <FeaturedProject />
         <OtherProjects />

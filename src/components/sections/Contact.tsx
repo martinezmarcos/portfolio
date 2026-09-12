@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { ArrowUpRight } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/icons";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export function Contact() {
   return (

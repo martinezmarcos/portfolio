@@ -1,6 +1,7 @@
 "use client";
 
 import type { AnchorHTMLAttributes, MouseEvent } from "react";
+import { smoothScrollTo } from "@/lib/smooth-scroll";
 
 type UnderlineLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
@@ -10,14 +11,7 @@ export function UnderlineLink({ children, className = "", href, onClick, ...prop
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (href.startsWith("#")) {
       e.preventDefault();
-      if (href === "#top") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        const el = document.querySelector(href);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
-        }
-      }
+      smoothScrollTo(href, 85);
     }
     onClick?.(e);
   };

@@ -4,6 +4,8 @@ import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
+import { smoothScrollTo } from "@/lib/smooth-scroll";
+
 const navItems = [
   { href: "#projects", label: "Work" },
   { href: "#systems", label: "Systems" },
@@ -16,25 +18,12 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
-  // Smooth programmatic scroll with floating navbar clearance
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
     e.preventDefault();
-    const targetId = href.replace("#", "");
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      const navClearance = 90; // floating pill offset
-      const targetPosition =
-        targetElement.getBoundingClientRect().top + window.pageYOffset - navClearance;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      });
-    }
+    smoothScrollTo(href, 85);
     setOpen(false);
   };
 

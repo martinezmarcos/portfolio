@@ -41,7 +41,7 @@ export function FeaturedProject() {
         {/* Left Column: Problem, System Architecture, Decisions */}
         <div className="lg:col-span-7 space-y-8">
           <Reveal delay={0.1}>
-            <div className="rounded-2xl border border-white/[0.08] bg-zinc-950/70 p-6 sm:p-8 space-y-6">
+            <SpotlightCard className="p-6 sm:p-8 space-y-6">
               <div>
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">
                   The Industrial Bottleneck
@@ -59,7 +59,7 @@ export function FeaturedProject() {
                   {featuredProject.build}
                 </p>
               </div>
-            </div>
+            </SpotlightCard>
           </Reveal>
 
           {/* Key Architectural Decisions */}

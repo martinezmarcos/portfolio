@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { motion } from "motion/react";
 import { otherProjects, type ProjectCategory } from "@/lib/data";
 import { Reveal } from "@/components/ui/Reveal";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
@@ -45,7 +44,7 @@ export function OtherProjects() {
             </p>
           </div>
 
-          {/* Gliding Spring-Animated Pill Switcher (Fixes text wrap/clipping issue) */}
+          {/* Solid Smooth Category Switcher (Bug-free, no coordinate glitch) */}
           <div className="flex items-center gap-1 overflow-x-auto no-scrollbar rounded-full border border-white/[0.12] bg-zinc-950/85 p-1.5 backdrop-blur-xl shadow-lg max-w-full">
             {categories.map((cat) => {
               const isActive = activeCategory === cat;
@@ -54,22 +53,13 @@ export function OtherProjects() {
                   key={cat}
                   type="button"
                   onClick={() => setActiveCategory(cat)}
-                  className="relative rounded-full px-4 py-1.5 font-sans text-xs font-medium whitespace-nowrap transition-colors outline-none focus-visible:ring-1 focus-visible:ring-white"
+                  className={`rounded-full px-4 py-1.5 font-sans text-xs font-medium whitespace-nowrap transition-all duration-200 outline-none ${
+                    isActive
+                      ? "bg-white text-black font-semibold shadow-md"
+                      : "text-zinc-400 hover:text-white hover:bg-white/[0.06]"
+                  }`}
                 >
-                  {isActive && (
-                    <motion.span
-                      layoutId="active-category-pill"
-                      className="absolute inset-0 rounded-full bg-white shadow-sm"
-                      transition={{ type: "spring", stiffness: 450, damping: 35 }}
-                    />
-                  )}
-                  <span
-                    className={`relative z-10 transition-colors duration-200 ${
-                      isActive ? "font-semibold text-black" : "text-zinc-400 hover:text-white"
-                    }`}
-                  >
-                    {cat}
-                  </span>
+                  {cat}
                 </button>
               );
             })}
@@ -77,96 +67,94 @@ export function OtherProjects() {
         </div>
       </Reveal>
 
-      {/* Projects Grid with Asymmetric Technical Density */}
+      {/* Projects Grid with Spotlight Glow following cursor */}
       <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {filteredProjects.map((project, index) => (
-          <Reveal key={project.id} delay={index * 0.05}>
-            <SpotlightCard className="flex h-full flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/60">
-              <div>
-                {/* Meta Header */}
-                <div className="flex items-center justify-between border-b border-white/[0.06] pb-4">
-                  <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-400">
-                    <span className="rounded bg-white/[0.06] px-2 py-0.5 font-semibold text-zinc-300">
-                      {project.typeTag}
-                    </span>
-                    <span className="text-zinc-600">·</span>
-                    <span className="text-emerald-400">{project.complexity}</span>
-                  </div>
-
-                  <motion.a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`View ${project.title} on GitHub`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-1.5 font-sans text-xs font-medium text-zinc-300 transition-colors hover:text-white"
-                  >
-                    <GitHubIcon size={14} />
-                    <span>Source</span>
-                    <ArrowUpRight size={13} />
-                  </motion.a>
+        {filteredProjects.map((project) => (
+          <SpotlightCard
+            key={project.id}
+            className="flex h-full flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/60"
+          >
+            <div>
+              {/* Meta Header */}
+              <div className="flex items-center justify-between border-b border-white/[0.06] pb-4">
+                <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-400">
+                  <span className="rounded bg-white/[0.06] px-2 py-0.5 font-semibold text-zinc-300">
+                    {project.typeTag}
+                  </span>
+                  <span className="text-zinc-600">·</span>
+                  <span className="text-emerald-400">{project.complexity}</span>
                 </div>
 
-                {/* Human Title & Tagline */}
-                <h4 className="mt-5 text-2xl font-medium tracking-tight text-white group-hover:text-zinc-100">
-                  {project.title}
-                </h4>
-                <p className="mt-1 font-sans text-sm text-zinc-400">
-                  {project.tagline}
-                </p>
-
-                {/* Subtly Enlarged Narrative Description */}
-                <p className="mt-4 text-[15.5px] leading-[1.72] text-zinc-300">
-                  {project.description}
-                </p>
-
-                {/* Architectural Breakdown Box */}
-                <div className="mt-6 rounded-xl border border-white/[0.06] bg-white/[0.015] p-4 space-y-2.5">
-                  <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-500">
-                    System Mechanics
-                  </p>
-                  {project.architectureBreakdown.map((item) => (
-                    <div
-                      key={item.label}
-                      className="grid grid-cols-12 gap-2 text-xs font-mono"
-                    >
-                      <span className="col-span-4 text-zinc-400 truncate">{item.label}:</span>
-                      <span className="col-span-8 text-zinc-200">{item.detail}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Footer with Stack & Smooth Button Action */}
-              <div className="mt-8 border-t border-white/[0.06] pt-5">
-                <div className="flex flex-wrap gap-1.5">
-                  {project.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded border border-white/[0.06] bg-zinc-900/50 px-2.5 py-0.5 font-mono text-[11px] text-zinc-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <motion.a
+                <a
                   href={project.link}
                   target="_blank"
                   rel="noreferrer"
-                  whileHover={{ x: 2 }}
-                  className="group mt-5 inline-flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-[0.14em] text-white transition-opacity hover:opacity-80"
+                  aria-label={`View ${project.title} on GitHub`}
+                  className="flex items-center gap-1.5 font-sans text-xs font-medium text-zinc-300 transition-colors hover:text-white"
                 >
-                  <span>View Repository on GitHub</span>
-                  <ArrowUpRight
-                    size={14}
-                    className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
-                </motion.a>
+                  <GitHubIcon size={14} />
+                  <span>Source</span>
+                  <ArrowUpRight size={13} />
+                </a>
               </div>
-            </SpotlightCard>
-          </Reveal>
+
+              {/* Human Title & Tagline */}
+              <h4 className="mt-5 text-2xl font-medium tracking-tight text-white group-hover:text-zinc-100">
+                {project.title}
+              </h4>
+              <p className="mt-1 font-sans text-sm text-zinc-400">
+                {project.tagline}
+              </p>
+
+              {/* Subtly Enlarged Narrative Description */}
+              <p className="mt-4 text-[15.5px] leading-[1.72] text-zinc-300">
+                {project.description}
+              </p>
+
+              {/* Architectural Breakdown Box */}
+              <div className="mt-6 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 space-y-2.5">
+                <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-500">
+                  System Mechanics
+                </p>
+                {project.architectureBreakdown.map((item) => (
+                  <div
+                    key={item.label}
+                    className="grid grid-cols-12 gap-2 text-xs font-mono"
+                  >
+                    <span className="col-span-4 text-zinc-400 truncate">{item.label}:</span>
+                    <span className="col-span-8 text-zinc-200">{item.detail}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Footer with Stack & Direct Action */}
+            <div className="mt-8 border-t border-white/[0.06] pt-5">
+              <div className="flex flex-wrap gap-1.5">
+                {project.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded border border-white/[0.06] bg-zinc-900/50 px-2.5 py-0.5 font-mono text-[11px] text-zinc-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+                className="group mt-5 inline-flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-[0.14em] text-white transition-opacity hover:opacity-80"
+              >
+                <span>View Repository on GitHub</span>
+                <ArrowUpRight
+                  size={14}
+                  className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+            </div>
+          </SpotlightCard>
         ))}
       </div>
     </div>
