@@ -38,16 +38,19 @@ export function Reveal({
 }: RevealProps) {
   const shouldReduceMotion = usePrefersReducedMotion();
 
+  // CRITICAL: Never hide content with opacity: 0 in SSR or initial render.
+  // Animating only position (`y`) ensures that text is 100% visible immediately,
+  // preventing black/blank screens if IntersectionObserver is delayed or disabled.
   return (
     <motion.div
       className={className}
-      initial={shouldReduceMotion ? undefined : { opacity: 0, y: yOffset }}
-      whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1, margin: "0px 0px -10% 0px" }}
+      initial={shouldReduceMotion ? undefined : { y: yOffset }}
+      whileInView={shouldReduceMotion ? undefined : { y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{
-        duration: 0.7,
+        duration: 0.6,
         delay,
-        ease: [0.16, 1, 0.3, 1], // Smooth Vercel/Linear cubic-bezier
+        ease: [0.16, 1, 0.3, 1],
       }}
     >
       {children}
