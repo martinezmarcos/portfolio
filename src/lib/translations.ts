@@ -163,7 +163,7 @@ export const translations: Record<Language, Translations> = {
       summary:
         "I architect and maintain a multi-tenant operations SaaS powering daily industrial production across multiple companies. My engineering focus bridges distributed high-concurrency systems (atomic Redis locks, PostgreSQL RLS, pgvector RAG) with low-level C++20 data structures and memory mechanics.",
       metrics: {
-        companiesValue: "3",
+        companiesValue: "+4",
         companiesLabel: "Companies in Daily SaaS",
         lruValue: "O(1)",
         lruLabel: "Amortized LRU Cache",
@@ -504,7 +504,7 @@ export const translations: Record<Language, Translations> = {
       summary:
         "Diseño y mantengo una plataforma SaaS multi-tenant en producción activa utilizada diariamente por varias empresas. Mi enfoque de ingeniería une sistemas distribuidos de alta concurrencia (bloqueos atómicos en Redis, PostgreSQL RLS, pgvector RAG) con estructuras de datos y gestión de memoria en C++20.",
       metrics: {
-        companiesValue: "3",
+        companiesValue: "+4",
         companiesLabel: "Empresas en Producción Diaria",
         lruValue: "O(1)",
         lruLabel: "Caché LRU Amortizado",
