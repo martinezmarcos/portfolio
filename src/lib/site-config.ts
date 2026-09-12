@@ -1,11 +1,11 @@
 export const siteConfig = {
   name: "Marcos Martinez Jaime",
   shortName: "Marcos Martinez",
-  role: "Full Stack Developer",
-  title: "Marcos Martinez Jaime — Full Stack Developer",
+  role: "Full Stack & Systems Developer",
+  headline: "I build reliable software for real-world production and distributed systems.",
+  title: "Marcos Martinez Jaime — Full Stack & Systems Developer",
   description:
-    "Full Stack Developer working with React, Next.js, Node.js and PostgreSQL/Supabase. Builder of a SaaS platform used daily by two furniture manufacturing businesses.",
-  // Placeholder — replace with the real production domain before going live.
+    "Full Stack & Systems Developer based in Argentina. Builder of a production multi-tenant SaaS for furniture manufacturing, distributed locks with Redis/PostgreSQL, RAG architectures with pgvector, and low-level data structures in C++.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://marcosmartinez.dev",
   locale: "en_US",
   email: "martinezmarcostrabajo@gmail.com",
@@ -14,11 +14,13 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/martinez-jaime-marcos/",
   },
   location: "Argentina",
+  availability: "Available for Full Stack & Systems Roles",
 } as const;
 
 export const navLinks = [
-  { href: "#work", label: "Work" },
-  { href: "#about", label: "About" },
+  { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
+  { href: "#timeline", label: "Timeline" },
+  { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ] as const;

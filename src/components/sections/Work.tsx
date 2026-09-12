@@ -5,19 +5,19 @@ import { OtherProjects } from "@/components/sections/work/OtherProjects";
 
 export function Work() {
   return (
-    <section id="work" className="border-b border-line">
+    <section id="projects" className="border-b border-white/[0.08]">
       <div className="mx-auto max-w-content px-6 py-24 sm:px-10 sm:py-32">
         <FeaturedProject />
         <OtherProjects />
 
-        <div className="mt-16 border-t border-line pt-8">
+        <div className="mt-20 border-t border-white/[0.08] pt-8 text-center sm:text-left">
           <UnderlineLink
             href={siteConfig.social.github}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-xs uppercase tracking-[0.15em] text-ink"
+            className="font-mono text-xs uppercase tracking-[0.18em] text-zinc-400 hover:text-white"
           >
-            More projects and code on GitHub →
+            View all open source repositories on GitHub →
           </UnderlineLink>
         </div>
       </div>

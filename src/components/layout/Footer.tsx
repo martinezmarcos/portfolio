@@ -5,19 +5,19 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto flex max-w-content flex-col gap-4 px-6 py-10 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between sm:px-10">
+    <footer className="border-t border-white/[0.08] bg-black">
+      <div className="mx-auto flex max-w-content flex-col gap-4 px-6 py-10 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between sm:px-10">
         <p className="font-mono text-xs">
-          © {year} {siteConfig.name}
+          © {year} {siteConfig.name} · Engineered with Next.js 16 & Tailwind CSS v4
         </p>
-        <div className="flex gap-6 font-mono text-xs uppercase tracking-[0.15em]">
+        <div className="flex gap-6 font-mono text-xs uppercase tracking-[0.16em]">
           <UnderlineLink href={siteConfig.social.github} target="_blank" rel="noreferrer">
             GitHub
           </UnderlineLink>
           <UnderlineLink href={siteConfig.social.linkedin} target="_blank" rel="noreferrer">
             LinkedIn
           </UnderlineLink>
-          <UnderlineLink href="#top">Back to top</UnderlineLink>
+          <UnderlineLink href="#top">Back to top ↑</UnderlineLink>
         </div>
       </div>
     </footer>

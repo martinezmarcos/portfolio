@@ -15,19 +15,47 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "80px",
-          backgroundColor: "#f8f5f0",
-          color: "#17140f",
+          backgroundColor: "#000000",
+          color: "#ffffff",
+          fontFamily: "sans-serif",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
         }}
       >
-        <div style={{ display: "flex", fontSize: 28, letterSpacing: 2, color: "#b8471f" }}>
-          {siteConfig.role.toUpperCase()}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            fontSize: 22,
+            letterSpacing: 3,
+            color: "#a1a1aa",
+            textTransform: "uppercase",
+          }}
+        >
+          <div
+            style={{
+              width: 10,
+              height: 10,
+              borderRadius: 5,
+              backgroundColor: "#10b981",
+            }}
+          />
+          {siteConfig.role}
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <div style={{ display: "flex", fontSize: 72, fontWeight: 700, lineHeight: 1.1 }}>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 68,
+              fontWeight: 600,
+              lineHeight: 1.1,
+              letterSpacing: -2,
+            }}
+          >
             {siteConfig.name}
           </div>
-          <div style={{ display: "flex", fontSize: 30, color: "#6b665c" }}>
-            React · Next.js · Node.js · PostgreSQL / Supabase
+          <div style={{ display: "flex", fontSize: 26, color: "#a1a1aa", lineHeight: 1.4 }}>
+            Production SaaS · Distributed Concurrency · RAG · C++ Systems
           </div>
         </div>
       </div>

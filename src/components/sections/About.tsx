@@ -2,29 +2,31 @@ import { Kicker } from "@/components/ui/Kicker";
 import { Reveal } from "@/components/ui/Reveal";
 
 const paragraphs = [
-  "I'm a full stack developer based in Argentina, working mainly with React, Next.js, Node.js and PostgreSQL/Supabase. I'm technically trained — a Computer Science Technician — and currently studying to become a System Analyst, but most of what I know comes from building and maintaining software that has to keep working after I ship it.",
-  "My main project is a SaaS platform for furniture manufacturing businesses. It isn't a demo sitting in a personal repo — it's software two companies use every day to manage their products, materials, inventory, orders and teams. Building something a stranger has to trust with their business is a different discipline than building something for a portfolio.",
-  "I've also worked with C#, ASP.NET and Python, but my focus going forward is the JavaScript/TypeScript ecosystem: React on the frontend, Node.js and PostgreSQL on the backend, deployed on Vercel.",
+  "I'm a Full Stack & Systems Developer based in Argentina, specialized in building software that has to run reliably after shipping. I'm technically trained as a Computer Science Technician and currently completing formal studies as a System Analyst. Most of my engineering decisions come from maintaining code that real people and businesses depend on every day.",
+  "My core production work is an internal SaaS platform powering operations for two furniture manufacturing companies (INTERD & CLAXON). It isn't an unverified demo in a repo — it coordinates daily cutting schedules, sheet cut optimizations, raw material inventory, purchase orders, and workshop teams. Building systems that a business trusts with their revenue demands a level of rigor and defensive architecture that generic tutorials never teach.",
+  "Across the stack, my focus is divided between high-level web platforms (React, Next.js, Node.js, PostgreSQL/Supabase, Redis) and low-level algorithmic foundations in C++20 (multithreaded LRU caches, probabilistic Bloom filters, automata theory). Whether optimizing a 2D cutting problem or preventing race conditions in distributed reservations, I value clarity, determinism, and measurable performance.",
 ];
 
 export function About() {
   return (
-    <section id="about" className="border-b border-line">
+    <section id="about" className="border-b border-white/[0.08]">
       <div className="mx-auto max-w-content px-6 py-24 sm:px-10 sm:py-32">
-        <div className="grid gap-10 sm:grid-cols-12">
-          <div className="sm:col-span-4">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
             <Reveal>
-              <Kicker>About</Kicker>
-              <h2 className="mt-4 max-w-xs text-2xl font-medium leading-tight sm:text-3xl">
-                Building things that have to keep working.
+              <Kicker>Philosophy</Kicker>
+              <h2 className="mt-4 text-3xl font-medium tracking-tight text-white sm:text-4xl">
+                Building systems that cannot afford to fail.
               </h2>
             </Reveal>
           </div>
 
-          <div className="flex flex-col gap-6 sm:col-span-7 sm:col-start-6">
+          <div className="flex flex-col gap-6 lg:col-span-7 lg:col-start-6">
             {paragraphs.map((paragraph, index) => (
               <Reveal key={paragraph.slice(0, 24)} delay={index * 0.08}>
-                <p className="text-lg leading-relaxed text-ink-muted">{paragraph}</p>
+                <p className="text-base leading-relaxed text-zinc-400 sm:text-lg">
+                  {paragraph}
+                </p>
               </Reveal>
             ))}
           </div>

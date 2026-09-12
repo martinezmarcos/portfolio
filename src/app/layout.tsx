@@ -1,22 +1,16 @@
 import type { Metadata } from "next";
-import { DM_Sans, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -30,13 +24,17 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "Full Stack Developer",
+    "Systems Developer",
     "React Developer",
     "Node.js Developer",
     "Next.js",
     "PostgreSQL",
     "Supabase",
-    "JavaScript",
-    "Web Developer Argentina",
+    "Distributed Systems",
+    "C++",
+    "RAG",
+    "pgvector",
+    "Argentina",
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
@@ -76,11 +74,11 @@ const personJsonLd = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
+      className={`dark ${geistSans.variable} ${geistMono.variable}`}
     >
       <head>
         <script
@@ -88,7 +86,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body className="bg-paper text-ink antialiased">{children}</body>
+      <body className="bg-black text-zinc-100 antialiased selection:bg-white selection:text-black">
+        {children}
+      </body>
     </html>
   );
 }

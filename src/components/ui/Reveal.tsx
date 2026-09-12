@@ -19,11 +19,6 @@ function getServerSnapshot() {
   return false;
 }
 
-// Reads prefers-reduced-motion via useSyncExternalStore instead of motion's
-// own useReducedMotion: that hook resolves synchronously on the client
-// (window is always available there) but is always null during SSR, which
-// causes a hydration mismatch. useSyncExternalStore is built to reconcile
-// exactly this kind of server/client divergence safely.
 function usePrefersReducedMotion() {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
@@ -32,23 +27,28 @@ type RevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
+  yOffset?: number;
 };
 
-export function Reveal({ children, className, delay = 0 }: RevealProps) {
+export function Reveal({
+  children,
+  className = "",
+  delay = 0,
+  yOffset = 16,
+}: RevealProps) {
   const shouldReduceMotion = usePrefersReducedMotion();
 
-  // Deliberately never hides content via opacity. `initial`/`whileInView`
-  // only animate position, so if JS never runs (blocked script, a browser
-  // extension interfering, IntersectionObserver failing for any reason) the
-  // text is still fully visible and readable — just without the slide-in.
-  // Content must never depend on JS succeeding to be visible.
   return (
     <motion.div
       className={className}
-      initial={shouldReduceMotion ? undefined : { y: 16 }}
-      whileInView={shouldReduceMotion ? undefined : { y: 0 }}
-      viewport={{ once: true, amount: 0.1, margin: "0px 0px -20% 0px" }}
-      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+      initial={shouldReduceMotion ? undefined : { opacity: 0, y: yOffset }}
+      whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1, margin: "0px 0px -10% 0px" }}
+      transition={{
+        duration: 0.7,
+        delay,
+        ease: [0.16, 1, 0.3, 1], // Smooth Vercel/Linear cubic-bezier
+      }}
     >
       {children}
     </motion.div>
