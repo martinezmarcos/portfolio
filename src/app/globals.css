@@ -7,7 +7,7 @@
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-hover: rgba(255, 255, 255, 0.22);
   --color-text-primary: #ffffff;
-  --color-text-secondary: #a1a1aa;
+  --color-text-secondary: #d4d4d8;
   --color-text-muted: #71717a;
 }
 
@@ -34,6 +34,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
     color-scheme: dark;
   }
 
@@ -41,6 +42,12 @@
     background-color: #000000;
     color: #f4f4f5;
     font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  }
+
+  p {
+    font-size: 1.03125rem; /* ~16.5px: subtly enlarged for superior reading comfort */
+    line-height: 1.75;
+    color: #d4d4d8;
   }
 
   h1,
@@ -80,6 +87,15 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #3f3f46;
   }
+}
+
+/* Hide scrollbar for clean horizontal tab pills */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

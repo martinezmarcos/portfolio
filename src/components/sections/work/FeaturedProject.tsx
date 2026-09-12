@@ -30,7 +30,7 @@ export function FeaturedProject() {
           <h3 className="text-3xl font-medium tracking-[-0.03em] text-white sm:text-5xl md:text-6xl">
             {featuredProject.title}
           </h3>
-          <p className="mt-3 font-mono text-sm text-zinc-400 sm:text-base">
+          <p className="mt-3 font-sans text-base text-zinc-400 sm:text-lg">
             {featuredProject.subtitle}
           </p>
         </div>
@@ -46,7 +46,7 @@ export function FeaturedProject() {
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">
                   The Industrial Bottleneck
                 </p>
-                <p className="mt-3 text-base leading-relaxed text-zinc-300">
+                <p className="mt-3 text-[17px] leading-[1.75] text-zinc-300">
                   {featuredProject.problem}
                 </p>
               </div>
@@ -55,7 +55,7 @@ export function FeaturedProject() {
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">
                   Engineered Solution
                 </p>
-                <p className="mt-3 text-base leading-relaxed text-zinc-300">
+                <p className="mt-3 text-[17px] leading-[1.75] text-zinc-300">
                   {featuredProject.build}
                 </p>
               </div>
@@ -72,7 +72,7 @@ export function FeaturedProject() {
                 {featuredProject.decisions.map((dec) => (
                   <div
                     key={dec.title}
-                    className="rounded-xl border border-white/[0.06] bg-white/[0.015] p-4 transition-colors hover:border-white/[0.14] hover:bg-white/[0.03]"
+                    className="rounded-xl border border-white/[0.06] bg-white/[0.015] p-4 transition-all duration-200 hover:border-white/[0.14] hover:bg-white/[0.03]"
                   >
                     <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-zinc-400">
                       <span className="rounded bg-white/[0.08] px-1.5 py-0.5 text-zinc-300 font-semibold">
@@ -80,7 +80,7 @@ export function FeaturedProject() {
                       </span>
                       <span>{dec.title}</span>
                     </div>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                    <p className="mt-2 text-[15px] leading-relaxed text-zinc-300">
                       {dec.description}
                     </p>
                   </div>
@@ -138,7 +138,7 @@ export function FeaturedProject() {
                 <div className="grid grid-cols-3 gap-2 border-y border-white/[0.06] py-3 text-center">
                   {featuredProject.metrics.map((m) => (
                     <div key={m.label}>
-                      <p className="font-mono text-lg font-medium text-white">{m.value}</p>
+                      <p className="font-mono text-xl font-medium text-white">{m.value}</p>
                       <p className="font-mono text-[10px] uppercase text-zinc-400">{m.subtext}</p>
                     </div>
                   ))}

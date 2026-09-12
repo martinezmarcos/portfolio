@@ -8,7 +8,7 @@ const paragraphs = [
 
 export function About() {
   return (
-    <section id="about" className="border-b border-white/[0.08]">
+    <section id="about" className="border-b border-white/[0.08] scroll-mt-28">
       <div className="mx-auto max-w-content px-6 py-24 sm:px-10 sm:py-32">
         {/* Section Header */}
         <Reveal>
@@ -35,7 +35,7 @@ export function About() {
                 <p className="font-mono text-[11px] uppercase tracking-wider text-zinc-400">
                   Core Guiding Principle
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+                <p className="mt-3 text-[15px] leading-relaxed text-zinc-200">
                   &ldquo;A clean system is not one that has zero lines of code, but one where every
                   constraint, memory allocation, and concurrency lock can be defended under production
                   pressure.&rdquo;
@@ -48,7 +48,7 @@ export function About() {
           <div className="flex flex-col gap-6 lg:col-span-7 lg:pl-6">
             {paragraphs.map((paragraph, index) => (
               <Reveal key={paragraph.slice(0, 30)} delay={index * 0.08}>
-                <p className="text-base leading-relaxed text-zinc-400 sm:text-lg">
+                <p className="text-[16.5px] sm:text-[18px] leading-[1.78] text-zinc-300 font-normal">
                   {paragraph}
                 </p>
               </Reveal>

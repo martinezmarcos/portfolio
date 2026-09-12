@@ -3,7 +3,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function Timeline() {
   return (
-    <section id="timeline" className="border-b border-white/[0.08]">
+    <section id="timeline" className="border-b border-white/[0.08] scroll-mt-28">
       <div className="mx-auto max-w-content px-6 py-24 sm:px-10 sm:py-32">
         {/* Section Header */}
         <Reveal>
@@ -17,7 +17,7 @@ export function Timeline() {
           <h2 className="mt-4 max-w-2xl text-3xl font-medium tracking-[-0.03em] text-white sm:text-4xl md:text-5xl">
             Experience & Formal Education
           </h2>
-          <p className="mt-3 max-w-xl text-base text-zinc-400">
+          <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-zinc-300">
             A continuous progression combining formal systems analysis, low-level technical degrees,
             and software shipped to live factories.
           </p>
@@ -33,8 +33,8 @@ export function Timeline() {
                   <span className="h-2 w-2 rounded-full bg-white" />
                 </div>
 
-                {/* Content Card */}
-                <div className="flex-1 rounded-2xl border border-white/[0.08] bg-zinc-950/60 p-6 sm:p-8 transition-colors hover:border-white/[0.14] hover:bg-zinc-900/30">
+                {/* Content Card with Subtly Enlarged Typography */}
+                <div className="flex-1 rounded-2xl border border-white/[0.08] bg-zinc-950/60 p-6 sm:p-8 transition-all duration-200 hover:border-white/[0.14] hover:bg-zinc-900/30">
                   <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.06] pb-4">
                     <div>
                       <p className="font-mono text-xs uppercase tracking-[0.14em] text-zinc-400">
@@ -49,9 +49,9 @@ export function Timeline() {
                     </span>
                   </div>
 
-                  <p className="mt-2 font-mono text-xs text-zinc-400">{item.role}</p>
+                  <p className="mt-2 font-sans text-sm text-zinc-400">{item.role}</p>
 
-                  <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+                  <p className="mt-4 text-[16px] leading-[1.75] text-zinc-300">
                     {item.description}
                   </p>
 
@@ -59,9 +59,9 @@ export function Timeline() {
                     {item.bullets.map((bullet) => (
                       <li
                         key={bullet}
-                        className="flex items-start gap-2.5 font-mono text-xs text-zinc-400"
+                        className="flex items-start gap-2.5 text-[14.5px] leading-relaxed text-zinc-300"
                       >
-                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-500" />
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-zinc-400" />
                         <span>{bullet}</span>
                       </li>
                     ))}
