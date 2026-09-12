@@ -1,114 +1,104 @@
 "use client";
 
 import { useState } from "react";
-import { navLinks, siteConfig } from "@/lib/site-config";
-import { GitHubIcon, LinkedInIcon } from "@/components/ui/icons";
+import { ArrowUpRight } from "lucide-react";
+
+const navItems = [
+  { href: "#projects", label: "Work" },
+  { href: "#systems", label: "Systems" },
+  { href: "#skills", label: "Skills" },
+  { href: "#timeline", label: "Timeline" },
+  { href: "#about", label: "About" },
+];
 
 export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.08] bg-black/75 backdrop-blur-md transition-all">
-      <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4 sm:px-10">
+    <header className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-2xl">
+      {/* Floating Island Pill Navbar */}
+      <div className="relative flex items-center justify-between rounded-full border border-white/[0.12] bg-zinc-950/80 px-4 py-2 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all">
+        {/* Left Monogram / Name with Live Status */}
         <a
           href="#top"
-          className="group flex items-center gap-3 font-mono text-sm tracking-tight text-white"
+          className="group flex items-center gap-2.5 font-mono text-xs font-medium text-white transition-opacity hover:opacity-80"
           onClick={() => setOpen(false)}
         >
-          <span className="flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.7)]" />
-          <span className="font-medium group-hover:text-zinc-300 transition-colors">
-            {siteConfig.name}
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.9)]" />
+          </span>
+          <span className="tracking-tight font-sans text-sm font-medium text-zinc-200 group-hover:text-white">
+            Marcos Martinez
           </span>
         </a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
+        {/* Center Desktop Navigation Links */}
+        <nav className="hidden items-center gap-1 sm:flex">
+          {navItems.map((item) => (
             <a
-              key={link.href}
-              href={link.href}
-              className="font-mono text-xs uppercase tracking-[0.18em] text-zinc-400 transition-colors hover:text-white"
+              key={item.href}
+              href={item.href}
+              className="rounded-full px-3 py-1 font-mono text-xs text-zinc-400 transition-colors hover:bg-white/[0.06] hover:text-white"
             >
-              {link.label}
+              {item.label}
             </a>
           ))}
         </nav>
 
-        {/* Actions & Socials */}
-        <div className="hidden items-center gap-4 sm:flex">
-          <a
-            href={siteConfig.social.github}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="GitHub"
-            className="text-zinc-400 transition-colors hover:text-white"
-          >
-            <GitHubIcon size={18} />
-          </a>
-          <a
-            href={siteConfig.social.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn"
-            className="text-zinc-400 transition-colors hover:text-white"
-          >
-            <LinkedInIcon size={18} />
-          </a>
+        {/* Right CTA Button */}
+        <div className="flex items-center gap-2">
           <a
             href="#contact"
-            className="rounded-full border border-white/20 bg-white px-3.5 py-1.5 font-mono text-xs font-medium text-black transition-all hover:bg-zinc-200"
+            className="group hidden items-center gap-1 rounded-full border border-white/20 bg-white px-3.5 py-1 text-xs font-medium text-black transition-all hover:bg-zinc-200 sm:inline-flex"
           >
-            Get in touch
+            <span>Contact</span>
+            <ArrowUpRight
+              size={12}
+              className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
           </a>
-        </div>
 
-        {/* Mobile menu toggle */}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="font-mono text-xs uppercase tracking-[0.18em] text-zinc-300 md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-        >
-          {open ? "Close" : "Menu"}
-        </button>
+          {/* Mobile Menu Toggle */}
+          <button
+            type="button"
+            onClick={() => setOpen((prev) => !prev)}
+            className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-xs text-zinc-300 transition-colors hover:bg-white/10 hover:text-white sm:hidden"
+            aria-expanded={open}
+            aria-controls="floating-mobile-menu"
+          >
+            {open ? "Close" : "Menu"}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile dropdown */}
+      {/* Floating Mobile Dropdown Menu Card */}
       {open && (
-        <nav
-          id="mobile-nav"
-          className="flex flex-col gap-2 border-t border-white/[0.08] bg-black px-6 py-6 md:hidden"
+        <div
+          id="floating-mobile-menu"
+          className="mt-2 rounded-2xl border border-white/10 bg-zinc-950/95 p-4 backdrop-blur-2xl shadow-2xl sm:hidden"
         >
-          {navLinks.map((link) => (
+          <nav className="flex flex-col gap-1">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="rounded-xl px-3 py-2.5 font-mono text-xs uppercase tracking-wider text-zinc-400 transition-colors hover:bg-white/[0.05] hover:text-white"
+              >
+                {item.label}
+              </a>
+            ))}
             <a
-              key={link.href}
-              href={link.href}
+              href="#contact"
               onClick={() => setOpen(false)}
-              className="py-2 font-mono text-sm uppercase tracking-[0.15em] text-zinc-400 transition-colors hover:text-white"
+              className="mt-2 flex items-center justify-between rounded-xl bg-white px-3.5 py-2.5 font-mono text-xs font-medium text-black"
             >
-              {link.label}
+              <span>Get in touch</span>
+              <ArrowUpRight size={14} />
             </a>
-          ))}
-          <div className="mt-4 flex items-center gap-6 border-t border-white/[0.08] pt-4 text-zinc-400">
-            <a
-              href={siteConfig.social.github}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-white"
-            >
-              GitHub
-            </a>
-            <a
-              href={siteConfig.social.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-white"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </nav>
+          </nav>
+        </div>
       )}
     </header>
   );
