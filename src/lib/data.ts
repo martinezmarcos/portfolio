@@ -86,20 +86,63 @@ export type OtherProject = {
   id: string;
   title: string;
   category: ProjectCategory;
+  categoryLabel?: string;
   typeTag: string;
   complexity: string;
   tagline: string;
   description: string;
-  highlights: string[];
+  highlights?: string[];
   architectureBreakdown: {
     label: string;
     detail: string;
   }[];
   stack: string[];
   link: string;
+  featured?: boolean;
+  featuredBadge?: string;
+  categories?: ProjectCategory[];
 };
 
 export const otherProjects: OtherProject[] = [
+  {
+    id: "llm-inference-engine",
+    title: "LLM Inference Engine",
+    category: "Low-Level & C++",
+    categories: ["Low-Level & C++", "AI & RAG"],
+    categoryLabel: "Low-Level & Systems",
+    typeTag: "ZERO-FRAMEWORK SYSTEMS",
+    complexity: "Zero-Alloc Hot Loop",
+    featured: true,
+    featuredBadge: "Flagship Systems Architecture · Pure Rust",
+    tagline: "High-performance from-scratch Transformer LLM inference engine in Rust with zero ML frameworks",
+    description:
+      "Engineered completely from scratch in Rust with zero machine learning dependencies (no PyTorch, Candle, or ONNX). Implements the complete low-level systems pipeline required to execute modern decoder-only Transformers on CPU: custom GGUF binary parser with zero-copy memory mapping (mmap), a multi-dimensional tensor runtime with cache-conscious row-major memory layouts, a zero-allocation autoregressive decoding loop, and multi-threaded parallel execution via Rayon.",
+    highlights: [
+      "Zero-Allocation Hot Path",
+      "Zero-Copy GGUF mmap Parser",
+      "O(1) Autoregressive KV Cache",
+      "Rayon Multithreaded Matmul",
+    ],
+    architectureBreakdown: [
+      { label: "Model Ingestion", detail: "GGUF v2/v3 binary parser with zero-copy mmap" },
+      { label: "Memory Topology", detail: "Zero-allocation autoregressive decoding hot loop" },
+      { label: "Transformer Ops", detail: "GQA, RoPE embeddings, RMSNorm & SwiGLU FFN" },
+      { label: "Attention Acceleration", detail: "O(1) Autoregressive KV Cache eliminating recomputation" },
+      { label: "Parallel Compute", detail: "Data-parallel tensor kernels & matmul via Rayon" },
+      { label: "Quantization", detail: "Block INT8 (Q8_0) & INT4 (Q4_0) specialized dot products" },
+    ],
+    stack: [
+      "Rust",
+      "GGUF",
+      "Rayon",
+      "mmap",
+      "Transformer",
+      "SIMD",
+      "KV Cache",
+      "BPE Tokenizer",
+    ],
+    link: "https://github.com/martinezmarcos/LLM-Inference-Engine",
+  },
   {
     id: "cancha-directa",
     title: "Cancha Directa",

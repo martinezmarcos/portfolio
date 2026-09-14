@@ -29,6 +29,10 @@ export type OtherProject = {
   architectureBreakdown: ArchitectureBreakdownItem[];
   stack: string[];
   link: string;
+  featured?: boolean;
+  featuredBadge?: string;
+  highlights?: string[];
+  categories?: ("All" | "Distributed Systems" | "AI & RAG" | "Low-Level & C++")[];
 };
 
 export type SkillItem = {
@@ -240,6 +244,36 @@ export const translations: Record<Language, Translations> = {
       source: "Source",
       allRepos: "View all open source repositories on GitHub →",
       items: [
+        {
+          id: "llm-inference-engine",
+          title: "LLM Inference Engine",
+          category: "Low-Level & C++",
+          categories: ["Low-Level & C++", "AI & RAG"],
+          categoryLabel: "Low-Level & Systems",
+          typeTag: "Zero-Framework Systems",
+          complexity: "Zero-Alloc Hot Loop",
+          featured: true,
+          featuredBadge: "Flagship Systems Architecture · Pure Rust",
+          tagline: "High-performance from-scratch Transformer LLM inference engine in Rust with zero ML frameworks",
+          description:
+            "Engineered completely from scratch in Rust with zero machine learning dependencies (no PyTorch, Candle, or ONNX). Implements the complete low-level systems pipeline required to execute modern decoder-only Transformers on CPU: custom GGUF binary parser with zero-copy memory mapping (mmap), a multi-dimensional tensor runtime with cache-conscious row-major memory layouts, a zero-allocation autoregressive decoding loop, and multi-threaded parallel execution via Rayon.",
+          highlights: [
+            "Zero-Allocation Hot Path",
+            "Zero-Copy GGUF mmap Parser",
+            "O(1) Autoregressive KV Cache",
+            "Rayon Multithreaded Matmul",
+          ],
+          architectureBreakdown: [
+            { label: "Model Ingestion", detail: "GGUF v2/v3 binary parser with zero-copy mmap" },
+            { label: "Memory Topology", detail: "Zero-allocation autoregressive decoding hot loop" },
+            { label: "Transformer Ops", detail: "GQA, RoPE embeddings, RMSNorm & SwiGLU FFN" },
+            { label: "Attention Acceleration", detail: "O(1) Autoregressive KV Cache eliminating recomputation" },
+            { label: "Parallel Compute", detail: "Data-parallel tensor kernels & matmul via Rayon" },
+            { label: "Quantization", detail: "Block INT8 (Q8_0) & INT4 (Q4_0) specialized dot products" },
+          ],
+          stack: ["Rust", "GGUF", "Rayon", "mmap", "Transformer", "SIMD", "KV Cache", "BPE Tokenizer"],
+          link: "https://github.com/martinezmarcos/LLM-Inference-Engine",
+        },
         {
           id: "lru-cache",
           title: "LRU Cache",
@@ -581,6 +615,36 @@ export const translations: Record<Language, Translations> = {
       source: "Código",
       allRepos: "Ver todos los repositorios open source en GitHub →",
       items: [
+        {
+          id: "llm-inference-engine",
+          title: "LLM Inference Engine",
+          category: "Low-Level & C++",
+          categories: ["Low-Level & C++", "AI & RAG"],
+          categoryLabel: "Bajo Nivel & Sistemas",
+          typeTag: "Rust Sin Frameworks",
+          complexity: "Hot Loop Zero-Alloc",
+          featured: true,
+          featuredBadge: "Arquitectura de Sistemas Destacada · Rust Puro",
+          tagline: "Motor de inferencia LLM Transformer de alto rendimiento implementado desde cero en Rust sin frameworks de ML",
+          description:
+            "Diseñado e implementado completamente desde cero en Rust sin frameworks de machine learning (sin PyTorch, Candle ni ONNX). Implementa la infraestructura de sistemas de bajo nivel necesaria para ejecutar modelos Transformer decoder-only en CPU: parser binario GGUF v2/v3 con mapeo directo de memoria (mmap), runtime tensorial multidimensional optimizado para caché, bucle de decodificación autorregresivo con cero asignaciones en el heap y ejecución multithread con Rayon.",
+          highlights: [
+            "Bucle de Decodificación Zero-Alloc",
+            "Parser GGUF con mmap de Copia Cero",
+            "Caché KV Autorregresivo O(1)",
+            "Matmul Multithread con Rayon",
+          ],
+          architectureBreakdown: [
+            { label: "Carga del Modelo", detail: "Parser binario GGUF v2/v3 con mmap de copia cero" },
+            { label: "Gestión de Memoria", detail: "Bucle de decodificación sin asignaciones en heap" },
+            { label: "Operaciones Transformer", detail: "GQA, embeddings RoPE, RMSNorm y FFN SwiGLU" },
+            { label: "Aceleración de Atención", detail: "Caché KV autorregresivo O(1) que evita recomputación" },
+            { label: "Cómputo Paralelo", detail: "Kernels tensoriales y matmul multithread con Rayon" },
+            { label: "Cuantización", detail: "Bloques INT8 (Q8_0) e INT4 (Q4_0) con dot products dedicados" },
+          ],
+          stack: ["Rust", "GGUF", "Rayon", "mmap", "Transformer", "SIMD", "KV Cache", "BPE Tokenizer"],
+          link: "https://github.com/martinezmarcos/LLM-Inference-Engine",
+        },
         {
           id: "lru-cache",
           title: "LRU Cache",
