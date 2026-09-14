@@ -453,11 +453,11 @@ export const translations: Record<Language, Translations> = {
         },
         {
           period: "August 2025 — Present",
-          title: "System Analyst Degree",
-          role: "Higher Education",
+          title: "System Analyst",
+          role: "University Degree",
           badge: "In Progress",
           description:
-            "Advanced formal computer science curriculum focusing on software engineering methodologies, relational algebra, distributed systems theory, and database engines.",
+            "University degree curriculum in computer science and systems: software engineering methodologies, relational algebra, distributed systems theory, and database engines.",
           bullets: [
             "Advanced relational calculus and database normalization",
             "Software architecture patterns and formal analysis",
@@ -500,7 +500,7 @@ export const translations: Record<Language, Translations> = {
       principleQuote:
         "“A clean system is not one that has zero lines of code, but one where every constraint, memory allocation, and concurrency lock can be defended under production pressure.”",
       paragraphs: [
-        "I am a Full Stack & Systems Developer based in Argentina, specialized in building software that keeps working after deployment. Trained as a Computer Science Technician through a rigorous 7-year program and currently completing formal studies as a System Analyst, most of what I understand about software comes from maintaining systems that businesses rely on for their daily survival.",
+        "I am a Full Stack & Systems Developer based in Argentina, specialized in building software that keeps working after deployment. Trained as a Computer Science Technician through a rigorous 7-year program and currently pursuing a university degree as a System Analyst, most of what I understand about software comes from maintaining systems that businesses rely on for their daily survival.",
         "My primary production achievement is an enterprise operations platform utilized across multiple production facilities. It is not a demonstration repository — it orchestrates cutting schedules, 2D packing algorithms, raw inventory, purchase orders, and workshop teams. Building software that business owners trust with their daily survival requires defensive architecture and operational rigor.",
         "My work spans high-level web platforms (React 19, Next.js 16, Node.js, PostgreSQL with Supabase RLS, Redis atomic locks) and low-level algorithmic foundations in C++20 (multithreaded LRU caches, probabilistic Bloom filters, automata theory). Whether designing a 2D packing heuristic or preventing race conditions in high-concurrency booking engines, I value determinism, algorithmic clarity, and measurable performance.",
       ],
@@ -824,11 +824,11 @@ export const translations: Record<Language, Translations> = {
         },
         {
           period: "Agosto 2025 — Presente",
-          title: "Tecnicatura Superior en Análisis de Sistemas",
-          role: "Educación Superior",
+          title: "Analista en Sistemas",
+          role: "Carrera Universitaria",
           badge: "En Curso",
           description:
-            "Formación formal avanzada en ciencias de la computación: metodologías de ingeniería de software, álgebra relacional, teoría de sistemas distribuidos y motores de bases de datos.",
+            "Carrera universitaria en ciencias de la computación y sistemas: metodologías de ingeniería de software, álgebra relacional, teoría de sistemas distribuidos y motores de bases de datos.",
           bullets: [
             "Cálculo relacional avanzado y normalización de bases de datos",
             "Patrones de arquitectura de software y análisis formal de requerimientos",
@@ -871,7 +871,7 @@ export const translations: Record<Language, Translations> = {
       principleQuote:
         "“Un sistema limpio no es aquel que tiene cero líneas de código, sino aquel donde cada restricción, asignación de memoria y bloqueo de concurrencia puede ser defendido bajo la presión de producción.”",
       paragraphs: [
-        "Soy Desarrollador Full Stack & Sistemas radicado en Argentina, especializado en construir software que sigue funcionando después del despliegue. Graduado como Técnico en Informática tras una formación intensiva de 7 años y cursando la carrera de Analista de Sistemas, la mayor parte de lo que entiendo sobre software proviene de mantener sistemas de los cuales dependen empresas para operar a diario.",
+        "Soy Desarrollador Full Stack & Sistemas radicado en Argentina, especializado en construir software que sigue funcionando después del despliegue. Graduado como Técnico en Informática tras una formación intensiva de 7 años y cursando la carrera universitaria de Analista en Sistemas, la mayor parte de lo que entiendo sobre software proviene de mantener sistemas de los cuales dependen empresas para operar a diario.",
         "Mi mayor logro en producción es una plataforma de operaciones utilizada activamente por varias empresas. No es un repositorio de demostración: orquesta programas de corte, algoritmos de empaquetamiento 2D, inventario de materiales, compras y equipos de taller. Construir software en el cual empresas depositan su operación diaria exige rigor defensivo y precisión.",
         "Mi trabajo abarca desde plataformas web de alto nivel (React 19, Next.js 16, Node.js, PostgreSQL con Supabase RLS, bloqueos atómicos en Redis) hasta bases algorítmicas de bajo nivel en C++20 (cachés LRU concurrentes, Bloom filters probabilísticos, teoría de autómatas). Ya sea optimizando un algoritmo de corte 2D o evitando race conditions en motores de reservas de alta concurrencia, valoro el determinismo, la claridad algorítmica y el rendimiento medible.",
       ],

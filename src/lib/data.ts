@@ -370,11 +370,11 @@ export const timeline: TimelineItem[] = [
   },
   {
     period: "August 2025 — Present",
-    title: "System Analyst Degree",
-    role: "Higher Education",
+    title: "System Analyst",
+    role: "University Degree",
     badge: "In Progress",
     description:
-      "Advancing formal academic training in software architecture, distributed systems, relational calculus, and enterprise information systems.",
+      "Advancing formal university degree training in software architecture, distributed systems, relational calculus, and enterprise information systems.",
     bullets: [
       "Distributed transactions, concurrency control, and database normalization",
       "Formal automata, complexity analysis, and systems engineering",
