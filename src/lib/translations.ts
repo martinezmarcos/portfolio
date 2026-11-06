@@ -238,7 +238,7 @@ export const translations: Record<Language, Translations> = {
               tag: "AI",
               title: "AI invoice capture",
               description:
-                "Reads supplier invoices with AI and loads them into purchases automatically, with no manual data entry.",
+                "Supplier invoices are read with Jev (TypeSafe): code extracts candidate amounts, dates, and tax IDs, and the model only picks among them, so it can't invent figures. Low-confidence fields are flagged for review.",
             },
             {
               tag: "SECURITY",
@@ -258,7 +258,7 @@ export const translations: Record<Language, Translations> = {
             { label: "Scope", value: "14", subtext: "Modules" },
             { label: "Sync", value: "Live", subtext: "Real-time" },
           ],
-          stack: ["React", "Vite", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Tesseract.js", "Tailwind CSS", "Vercel"],
+          stack: ["React", "Vite", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Jev (TypeSafe)", "Tesseract.js", "Tailwind CSS", "Vercel"],
         },
         {
           id: "honycars",
@@ -544,7 +544,7 @@ export const translations: Record<Language, Translations> = {
               tag: "IA",
               title: "Carga de facturas con IA",
               description:
-                "Lee las facturas de proveedores con IA y las carga en compras automáticamente, sin tipeo manual.",
+                "Las facturas de proveedores se leen con Jev (TypeSafe): el código extrae montos, fechas y CUIT candidatos y el modelo solo elige entre ellos, así que no puede inventar cifras. Los campos con baja confianza quedan para revisar.",
             },
             {
               tag: "SEGURIDAD",
@@ -564,7 +564,7 @@ export const translations: Record<Language, Translations> = {
             { label: "Alcance", value: "14", subtext: "Módulos" },
             { label: "Sync", value: "Live", subtext: "Tiempo real" },
           ],
-          stack: ["React", "Vite", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Tesseract.js", "Tailwind CSS", "Vercel"],
+          stack: ["React", "Vite", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Jev (TypeSafe)", "Tesseract.js", "Tailwind CSS", "Vercel"],
         },
         {
           id: "honycars",
