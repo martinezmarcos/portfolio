@@ -55,7 +55,7 @@ export default async function OpengraphImage() {
             {siteConfig.name}
           </div>
           <div style={{ display: "flex", fontSize: 26, color: "#a1a1aa", lineHeight: 1.4 }}>
-            Production SaaS · Distributed Concurrency · RAG · C++ Systems
+            Production SaaS · AI CRM · Rust · C++ Systems
           </div>
         </div>
       </div>

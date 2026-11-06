@@ -21,7 +21,7 @@ export function OtherProjects() {
         <p className="mt-2 max-w-xl text-[15.5px] leading-relaxed text-zinc-600">{p.subtitle}</p>
       </Reveal>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {p.items.map((project, index) => (
           <Reveal key={project.id} delay={index * 0.04} className="h-full">
             <a

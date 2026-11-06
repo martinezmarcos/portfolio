@@ -91,19 +91,17 @@ export function Header() {
             </span>
           </button>
 
-          <motion.a
+          <a
             href="#contact"
             onClick={(e) => handleSmoothScroll(e, "#contact")}
-            whileHover={{ scale: 1.04, y: -0.5 }}
-            whileTap={{ scale: 0.96 }}
-            className="group hidden items-center gap-1.5 rounded-full bg-zinc-950 px-3.5 py-1.5 font-sans text-[12px] font-semibold text-white transition-all hover:bg-zinc-800 sm:inline-flex shrink-0 whitespace-nowrap"
+            className="group hidden items-center gap-1.5 rounded-full bg-zinc-950 px-3.5 py-1.5 font-sans text-[12px] font-semibold text-white transition-colors duration-150 active:translate-y-px hover:bg-zinc-800 sm:inline-flex shrink-0 whitespace-nowrap"
           >
             <span>{t.nav.contact}</span>
             <ArrowUpRight
               size={13}
               className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
-          </motion.a>
+          </a>
 
           {/* Mobile Menu Toggle (visible on < md) */}
           <button

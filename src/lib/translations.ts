@@ -88,8 +88,8 @@ export type Translations = {
       companiesLabel: string;
       lruValue: string;
       lruLabel: string;
-      ragValue: string;
-      ragLabel: string;
+      productsValue: string;
+      productsLabel: string;
       systemsValue: string;
       systemsLabel: string;
     };
@@ -165,8 +165,8 @@ export const translations: Record<Language, Translations> = {
       close: "Close",
     },
     hero: {
-      terminal: "Full Stack & Systems",
-      location: "Buenos Aires, AR",
+      terminal: "Full Stack Developer",
+      location: "Buenos Aires, Argentina",
       headline: "Building software that survives real production and concurrency.",
       summary:
         "Software developer at Interd. I created Lorma, a multi-tenant SaaS that runs the daily operations of two manufacturing companies, and I co-develop HonyCars, a CRM with an AI chatbot for car dealerships. On the side, I build low-level systems in Rust and C++20.",
@@ -175,8 +175,8 @@ export const translations: Record<Language, Translations> = {
         companiesLabel: "Companies on Lorma Daily",
         lruValue: "O(1)",
         lruLabel: "Amortized LRU Cache",
-        ragValue: "81%",
-        ragLabel: "Recall@5 Vector RAG",
+        productsValue: "3",
+        productsLabel: "Products in Production",
         systemsValue: "C++20",
         systemsLabel: "& Next.js Full Stack",
       },
@@ -330,10 +330,10 @@ export const translations: Record<Language, Translations> = {
         {
           number: "01",
           title: "Backend Architecture & Distributed Systems",
-          subtitle: "Resilient microservices, atomic distributed locks, and production concurrency",
+          subtitle: "Multi-tenant platforms, real-time sync, and production APIs",
           items: [
             { name: "Node.js & TypeScript", level: "Production", description: "Strict typing, async I/O runtimes, defensive API contract modeling" },
-            { name: "Redis & Concurrency", level: "Production", description: "Atomic SETNX distributed locks, TTL expiration, sub-50ms cache layers" },
+            { name: "Realtime & WebSockets", level: "Production", description: "Supabase Realtime broadcast channels syncing job queues and stock across devices" },
             { name: "REST & RPC APIs", level: "Production", description: "Idempotent endpoints, structured telemetry, rate-limiting & auth barriers" },
             { name: "System Architecture", level: "Senior Technician", description: "Multi-tenant workspace resolution, RBAC access policies, state machines" },
           ],
@@ -357,17 +357,17 @@ export const translations: Record<Language, Translations> = {
             { name: "AI Automation & Agentic CLI", level: "Production", description: "Automated developer workflows, codebase auditing, and prompt pipelines using Claude CLI, OpenAI Codex, and local LLM orchestration via Ollama" },
             { name: "Python Bots & Automation", level: "Production", description: "Event-driven bots, asynchronous scrapers, automated alerting, and multi-service data extraction pipelines in Python" },
             { name: "Vercel & Edge Infrastructure", level: "Production", description: "Serverless edge networks, dynamic OG generation, zero-downtime CI/CD deployment" },
-            { name: "Compiled Systems Tooling", level: "Daily", description: "Git, GitHub Actions, CMake, Vitest concurrent suites, GoogleTest, ESLint 9, Turbopack" },
+            { name: "Compiled Systems Tooling", level: "Daily", description: "Git, GitHub Actions, CMake, Vitest, GoogleTest, ESLint 9, Turbopack" },
           ],
         },
         {
           number: "04",
-          title: "Database Engineering, Storage & Vector",
-          subtitle: "ACID compliance, relational schema design, and vector embedding similarity",
+          title: "Database Engineering & Storage",
+          subtitle: "ACID compliance, relational schema design, and row-level security",
           items: [
             { name: "PostgreSQL & Prisma", level: "Production", description: "Complex migrations, relational constraints, foreign keys, index optimization" },
             { name: "Supabase & Postgres RLS", level: "Production", description: "Fine-grained row security policies, Realtime websockets, JWT auth tokens" },
-            { name: "pgvector & RAG", level: "Production", description: "HNSW index vector searches, cosine distance similarity, high-recall retrieval" },
+            { name: "ERP Data Modeling", level: "Production", description: "Inventory, purchase orders, quotes, and cash-flow models across 14 business modules" },
             { name: "Database Hardening", level: "Defensive", description: "Zero-leak multi-tenant schema isolation, connection pooling, prepared statements" },
           ],
         },
@@ -440,7 +440,7 @@ export const translations: Record<Language, Translations> = {
       paragraphs: [
         "I am a Full Stack & Systems Developer based in Argentina, specialized in building software that keeps working after deployment. Trained as a Computer Science Technician through a rigorous 7-year program and currently pursuing a university degree as a System Analyst, most of what I understand about software comes from maintaining systems that businesses rely on for their daily survival.",
         "Today I work as a software developer at Interd, where I built the company website. I also created Lorma, the SaaS that Interd and Claxon use every day to plan cutting jobs, manage inventory and purchases, and coordinate their workshops, and I co-develop HonyCars, a CRM with an AI chatbot for car dealerships. Building software that businesses trust with their daily operations requires defensive architecture and operational rigor.",
-        "My work spans high-level web platforms (React 19, Next.js 16, Node.js, PostgreSQL with Supabase RLS, Redis atomic locks) and low-level algorithmic foundations in C++20 (multithreaded LRU caches, probabilistic Bloom filters, automata theory). Whether designing a 2D packing heuristic or preventing race conditions in high-concurrency booking engines, I value determinism, algorithmic clarity, and measurable performance.",
+        "My work spans high-level web platforms (React 19, Next.js 16, Node.js, PostgreSQL with Supabase RLS and Realtime) and low-level foundations in Rust and C++20 (a from-scratch LLM inference engine, multithreaded LRU caches, probabilistic Bloom filters, automata theory). Whether designing a 2D packing heuristic or a zero-allocation decoding loop, I value determinism, algorithmic clarity, and measurable performance.",
       ],
     },
     contactSection: {
@@ -470,8 +470,8 @@ export const translations: Record<Language, Translations> = {
       close: "Cerrar",
     },
     hero: {
-      terminal: "Full Stack & Sistemas",
-      location: "Buenos Aires, AR",
+      terminal: "Desarrollador Full Stack",
+      location: "Buenos Aires, Argentina",
       headline: "Construyendo software que sobrevive a producción real y concurrencia.",
       summary:
         "Desarrollador de software en Interd. Creé Lorma, un SaaS multi-tenant con el que operan a diario dos empresas de fabricación, y soy codesarrollador de HonyCars, un CRM con chatbot de IA para concesionarias. En paralelo, construyo sistemas de bajo nivel en Rust y C++20.",
@@ -480,8 +480,8 @@ export const translations: Record<Language, Translations> = {
         companiesLabel: "Empresas Usan Lorma a Diario",
         lruValue: "O(1)",
         lruLabel: "Caché LRU Amortizado",
-        ragValue: "81%",
-        ragLabel: "Recall@5 Vector RAG",
+        productsValue: "3",
+        productsLabel: "Productos en Producción",
         systemsValue: "C++20",
         systemsLabel: "& Next.js Full Stack",
       },
@@ -635,10 +635,10 @@ export const translations: Record<Language, Translations> = {
         {
           number: "01",
           title: "Arquitectura Backend & Sistemas Distribuidos",
-          subtitle: "Microservicios resilientes, bloqueos atómicos distribuidos y concurrencia en producción",
+          subtitle: "Plataformas multi-tenant, sincronización en tiempo real y APIs en producción",
           items: [
             { name: "Node.js & TypeScript", level: "Producción", description: "Tipado estricto, runtimes asíncronos y modelado defensivo de contratos de API" },
-            { name: "Redis & Concurrencia", level: "Producción", description: "Bloqueos atómicos SETNX distribuidos, expiración TTL y capas de caché sub-50ms" },
+            { name: "Tiempo Real & WebSockets", level: "Producción", description: "Canales broadcast de Supabase Realtime que sincronizan colas de trabajo y stock entre dispositivos" },
             { name: "APIs REST & RPC", level: "Producción", description: "Endpoints idempotentes, telemetría estructurada, rate-limiting y autenticación" },
             { name: "Arquitectura de Sistemas", level: "Técnico Superior", description: "Resolución de tenants multi-dominio, políticas RBAC y máquinas de estado" },
           ],
@@ -662,17 +662,17 @@ export const translations: Record<Language, Translations> = {
             { name: "Automatización con IA & CLI Agéntico", level: "Producción", description: "Flujos de desarrollo automatizados, auditorías de código y pipelines usando Claude CLI, OpenAI Codex y orquestación local vía Ollama" },
             { name: "Bots en Python & Automatización", level: "Producción", description: "Bots orientados a eventos, scrapers asíncronos, alertas automáticas y motores de extracción de datos en Python" },
             { name: "Vercel & Infraestructura Edge", level: "Producción", description: "Redes edge serverless, generación dinámica de OpenGraph y despliegues CI/CD" },
-            { name: "Tooling de Sistemas Compilados", level: "Diario", description: "Git, GitHub Actions, CMake, Vitest concurrente, GoogleTest, ESLint 9, Turbopack" },
+            { name: "Tooling de Sistemas Compilados", level: "Diario", description: "Git, GitHub Actions, CMake, Vitest, GoogleTest, ESLint 9, Turbopack" },
           ],
         },
         {
           number: "04",
-          title: "Ingeniería de Bases de Datos, Almacenamiento & Vector",
-          subtitle: "Cumplimiento ACID, diseño de esquemas relacionales y búsqueda vectorial",
+          title: "Ingeniería de Bases de Datos & Almacenamiento",
+          subtitle: "Cumplimiento ACID, diseño de esquemas relacionales y seguridad a nivel de fila",
           items: [
             { name: "PostgreSQL & Prisma", level: "Producción", description: "Migraciones complejas, restricciones relacionales, claves foráneas e índices" },
             { name: "Supabase & Postgres RLS", level: "Producción", description: "Políticas de seguridad a nivel de fila, websockets en tiempo real y tokens JWT" },
-            { name: "pgvector & RAG", level: "Producción", description: "Búsquedas vectoriales con índices HNSW, similitud coseno y alta recuperación" },
+            { name: "Modelado de Datos ERP", level: "Producción", description: "Inventario, órdenes de compra, presupuestos y flujo de caja en 14 módulos de negocio" },
             { name: "Seguridad y Blindaje de Datos", level: "Defensivo", description: "Aislamiento estricto de esquemas multi-tenant, connection pooling y prepared statements" },
           ],
         },
@@ -745,7 +745,7 @@ export const translations: Record<Language, Translations> = {
       paragraphs: [
         "Soy Desarrollador Full Stack & Sistemas radicado en Argentina, especializado en construir software que sigue funcionando después del despliegue. Graduado como Técnico en Informática tras una formación intensiva de 7 años y cursando la carrera universitaria de Analista en Sistemas, la mayor parte de lo que entiendo sobre software proviene de mantener sistemas de los cuales dependen empresas para operar a diario.",
         "Hoy trabajo como desarrollador de software en Interd, donde hice el sitio web de la empresa. Además creé Lorma, el SaaS con el que Interd y Claxon planifican cortes, gestionan inventario y compras y coordinan sus talleres todos los días, y soy codesarrollador de HonyCars, un CRM con chatbot de IA para concesionarias. Construir software del que dependen empresas para operar a diario exige rigor defensivo y precisión.",
-        "Mi trabajo abarca desde plataformas web de alto nivel (React 19, Next.js 16, Node.js, PostgreSQL con Supabase RLS, bloqueos atómicos en Redis) hasta bases algorítmicas de bajo nivel en C++20 (cachés LRU concurrentes, Bloom filters probabilísticos, teoría de autómatas). Ya sea optimizando un algoritmo de corte 2D o evitando race conditions en motores de reservas de alta concurrencia, valoro el determinismo, la claridad algorítmica y el rendimiento medible.",
+        "Mi trabajo abarca desde plataformas web de alto nivel (React 19, Next.js 16, Node.js, PostgreSQL con Supabase RLS y Realtime) hasta bases de bajo nivel en Rust y C++20 (un motor de inferencia LLM hecho desde cero, cachés LRU concurrentes, Bloom filters probabilísticos, teoría de autómatas). Ya sea optimizando un algoritmo de corte 2D o un bucle de decodificación sin asignaciones, valoro el determinismo, la claridad algorítmica y el rendimiento medible.",
       ],
     },
     contactSection: {

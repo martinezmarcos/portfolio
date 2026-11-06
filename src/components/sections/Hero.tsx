@@ -1,7 +1,6 @@
 "use client";
 
-import { ArrowDownRight, Download, Terminal } from "lucide-react";
-import { motion } from "motion/react";
+import { ArrowDownRight, Download } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/Reveal";
 import { CopyButton } from "@/components/ui/CopyButton";
@@ -23,16 +22,12 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#0000000a_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
       <div className="mx-auto max-w-content px-6 pb-24 sm:px-10 sm:pb-32">
-        {/* Terminal Micro-Spec Strip */}
         <Reveal>
-          <div className="inline-flex flex-wrap items-center gap-2 rounded-full border border-black/10 bg-zinc-100/70 px-3.5 py-1.5 font-mono text-[11px] text-zinc-600">
-            <span className="flex items-center gap-1.5 text-zinc-800">
-              <Terminal size={12} className="text-zinc-500" />
-              <span>{t.hero.terminal}</span>
-            </span>
-            <span className="text-zinc-300">/</span>
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-sans text-[15px] text-zinc-500">
+            <span className="font-medium text-zinc-950">{t.hero.terminal}</span>
+            <span aria-hidden className="h-px w-6 bg-zinc-300" />
             <span>{t.hero.location}</span>
-          </div>
+          </p>
         </Reveal>
 
         {/* Hero Display Headline */}
@@ -72,10 +67,10 @@ export function Hero() {
             </div>
             <div className="rounded-xl border border-zinc-200/90 bg-zinc-50/70 p-4 transition-all hover:border-zinc-300 hover:bg-white hover:shadow-md">
               <p className="font-mono text-2xl font-semibold tracking-tight text-zinc-950">
-                {t.hero.metrics.ragValue}
+                {t.hero.metrics.productsValue}
               </p>
               <p className="font-mono text-[11px] uppercase tracking-wider text-zinc-500">
-                {t.hero.metrics.ragLabel}
+                {t.hero.metrics.productsLabel}
               </p>
             </div>
             <div className="rounded-xl border border-zinc-200/90 bg-zinc-50/70 p-4 transition-all hover:border-zinc-300 hover:bg-white hover:shadow-md">
@@ -92,29 +87,23 @@ export function Hero() {
         {/* Action Buttons with Tactile Spring Animations */}
         <Reveal delay={0.24}>
           <div className="mt-10 flex flex-wrap items-center gap-3">
-            <motion.a
+            <a
               href="#experience"
               onClick={handleScrollToExperience}
-              whileHover={{ scale: 1.03, y: -1 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ duration: 0.2 }}
-              className="inline-flex items-center gap-2 rounded-xl bg-zinc-950 px-5 py-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-md transition-all hover:bg-zinc-800 hover:shadow-lg"
+              className="inline-flex items-center gap-2 rounded-xl bg-zinc-950 px-5 py-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-md transition-colors duration-150 active:translate-y-px hover:bg-zinc-800 hover:shadow-lg"
             >
               <span>{t.hero.ctaProjects}</span>
               <ArrowDownRight size={15} />
-            </motion.a>
+            </a>
 
-            <motion.a
+            <a
               href={siteConfig.cvUrl}
               download
-              whileHover={{ scale: 1.03, y: -1 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ duration: 0.2 }}
-              className="group inline-flex items-center gap-2 rounded-xl border border-zinc-950 bg-white px-4 py-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-zinc-950 transition-all hover:bg-zinc-950 hover:text-white"
+              className="group inline-flex items-center gap-2 rounded-xl border border-zinc-950 bg-white px-4 py-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-zinc-950 transition-colors duration-150 active:translate-y-px hover:bg-zinc-950 hover:text-white"
             >
               <Download size={15} className="transition-transform duration-200 group-hover:translate-y-0.5" />
               <span>{t.hero.downloadCv}</span>
-            </motion.a>
+            </a>
 
             <CopyButton
               text={siteConfig.email}
@@ -122,31 +111,25 @@ export function Hero() {
               className="rounded-xl px-4 py-3"
             />
 
-            <motion.a
+            <a
               href={siteConfig.social.github}
               target="_blank"
               rel="noreferrer"
-              whileHover={{ scale: 1.04, y: -1 }}
-              whileTap={{ scale: 0.96 }}
-              transition={{ duration: 0.2 }}
-              className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-3 font-sans text-xs font-medium text-zinc-700 transition-all hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-950"
+              className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-3 font-sans text-xs font-medium text-zinc-700 transition-colors duration-150 active:translate-y-px hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-950"
             >
               <GitHubIcon size={16} />
               <span>GitHub</span>
-            </motion.a>
+            </a>
 
-            <motion.a
+            <a
               href={siteConfig.social.linkedin}
               target="_blank"
               rel="noreferrer"
-              whileHover={{ scale: 1.04, y: -1 }}
-              whileTap={{ scale: 0.96 }}
-              transition={{ duration: 0.2 }}
-              className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-3 font-sans text-xs font-medium text-zinc-700 transition-all hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-950"
+              className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-3 font-sans text-xs font-medium text-zinc-700 transition-colors duration-150 active:translate-y-px hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-950"
             >
               <LinkedInIcon size={16} />
               <span>LinkedIn</span>
-            </motion.a>
+            </a>
           </div>
         </Reveal>
       </div>

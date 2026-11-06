@@ -5,7 +5,6 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { ArrowUpRight, Download } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/icons";
-import { motion } from "motion/react";
 import { useLanguage } from "@/lib/language-context";
 
 export function Contact() {
@@ -38,31 +37,25 @@ export function Contact() {
         {/* Contact Action Stage with tactile spring physics */}
         <Reveal delay={0.16}>
           <div className="mt-12 flex flex-wrap items-center gap-4">
-            <motion.a
+            <a
               href={`mailto:${siteConfig.email}`}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              className="group inline-flex items-center gap-2 rounded-full bg-zinc-950 px-7 py-3.5 font-sans text-sm font-semibold text-white shadow-md transition-all hover:bg-zinc-800"
+              className="group inline-flex items-center gap-2 rounded-full bg-zinc-950 px-7 py-3.5 font-sans text-sm font-semibold text-white shadow-md transition-colors duration-150 active:translate-y-px hover:bg-zinc-800"
             >
               <span>{siteConfig.email}</span>
               <ArrowUpRight
                 size={16}
                 className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
-            </motion.a>
+            </a>
 
-            <motion.a
+            <a
               href={siteConfig.cvUrl}
               download
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              className="group inline-flex items-center gap-2 rounded-full border border-zinc-950 bg-white px-6 py-3.5 font-sans text-sm font-semibold text-zinc-950 transition-all hover:bg-zinc-950 hover:text-white"
+              className="group inline-flex items-center gap-2 rounded-full border border-zinc-950 bg-white px-6 py-3.5 font-sans text-sm font-semibold text-zinc-950 transition-colors duration-150 active:translate-y-px hover:bg-zinc-950 hover:text-white"
             >
               <Download size={16} className="transition-transform duration-200 group-hover:translate-y-0.5" />
               <span>{t.hero.downloadCv}</span>
-            </motion.a>
+            </a>
 
             <CopyButton
               text={siteConfig.email}
@@ -75,26 +68,24 @@ export function Contact() {
         {/* Social Links Row */}
         <Reveal delay={0.24}>
           <div className="mt-16 flex flex-wrap items-center gap-8 border-t border-zinc-200/80 pt-8 font-sans text-xs uppercase tracking-[0.16em]">
-            <motion.a
+            <a
               href={siteConfig.social.github}
               target="_blank"
               rel="noreferrer"
-              whileHover={{ x: 2 }}
               className="flex items-center gap-2 text-zinc-500 transition-colors hover:text-zinc-950"
             >
               <GitHubIcon size={16} />
               <span>GitHub ↗</span>
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href={siteConfig.social.linkedin}
               target="_blank"
               rel="noreferrer"
-              whileHover={{ x: 2 }}
               className="flex items-center gap-2 text-zinc-500 transition-colors hover:text-zinc-950"
             >
               <LinkedInIcon size={16} />
               <span>LinkedIn ↗</span>
-            </motion.a>
+            </a>
             <span className="text-zinc-300">·</span>
             <span className="text-zinc-500 font-sans">{c.location}</span>
           </div>
