@@ -96,6 +96,7 @@ export type Translations = {
     ctaProjects: string;
     ctaContact: string;
     downloadCv: string;
+    cvUrl: string;
   };
   experienceSection: {
     sectionNum: string;
@@ -183,6 +184,7 @@ export const translations: Record<Language, Translations> = {
       ctaProjects: "View Experience",
       ctaContact: "Get in touch",
       downloadCv: "Download CV",
+      cvUrl: "/CV_MarcosMartinezJaime_EN.pdf",
     },
     experienceSection: {
       sectionNum: "01",
@@ -220,10 +222,10 @@ export const translations: Record<Language, Translations> = {
           url: "https://lorma.site",
           urlLabel: "lorma.site",
           badge: "Production SaaS",
-          tagline: "ERP and 2D cutting optimization for furniture manufacturers.",
-          highlights: ["Multi-tenant", "2D cutting engine", "14 modules", "Real-time", "RBAC"],
+          tagline: "ERP and production management for manufacturing companies.",
+          highlights: ["Multi-tenant", "AI invoice capture", "2D cutting engine", "14 modules", "Real-time", "RBAC"],
           summary:
-            "I created Lorma, a multi-tenant SaaS for furniture manufacturers that combines an ERP and 2D cutting optimization in one platform: inventory, suppliers, quotes, purchase orders, production scheduling, and cash flow across 14 integrated modules. Each company works in its own isolated workspace.",
+            "I created Lorma, a multi-tenant SaaS for manufacturing and production companies that brings ERP, production management, and 2D cutting optimization into one platform: inventory, suppliers, quotes, purchase orders, production scheduling, and cash flow across 14 integrated modules. Supplier invoices are read and loaded automatically with AI, and each company works in its own isolated workspace.",
           clients: ["Interd", "Claxon"],
           decisions: [
             {
@@ -233,16 +235,16 @@ export const translations: Record<Language, Translations> = {
                 "Packs rectangular panels onto standard sheets and calculates PVC edging, minimizing offcuts before jobs reach the shop floor.",
             },
             {
-              tag: "SECURITY",
-              title: "PostgreSQL with RLS",
+              tag: "AI",
+              title: "AI invoice capture",
               description:
-                "Prisma on Supabase with Row Level Security: every read and write goes through authenticated endpoints.",
+                "Reads supplier invoices with AI and loads them into purchases automatically, with no manual data entry.",
             },
             {
-              tag: "ACCESS",
-              title: "Role-based access (RBAC)",
+              tag: "SECURITY",
+              title: "PostgreSQL RLS + roles",
               description:
-                "ADMIN, SALES, DESIGNER, and OPERATOR roles. Workshop tablets only see cutting and assembly queues.",
+                "Row Level Security on Supabase plus ADMIN, SALES, DESIGNER, and OPERATOR roles. Workshop tablets only see their queues.",
             },
             {
               tag: "REALTIME",
@@ -487,7 +489,8 @@ export const translations: Record<Language, Translations> = {
       },
       ctaProjects: "Ver Experiencia",
       ctaContact: "Contactar",
-      downloadCv: "Descargar CV (EN)",
+      downloadCv: "Descargar CV",
+      cvUrl: "/CV_MarcosMartinezJaime_ES.pdf",
     },
     experienceSection: {
       sectionNum: "01",
@@ -525,10 +528,10 @@ export const translations: Record<Language, Translations> = {
           url: "https://lorma.site",
           urlLabel: "lorma.site",
           badge: "SaaS en Producción",
-          tagline: "ERP y optimización de corte 2D para fábricas de muebles.",
-          highlights: ["Multi-tenant", "Motor de corte 2D", "14 módulos", "Tiempo real", "RBAC"],
+          tagline: "ERP y gestión de producción para empresas de manufactura.",
+          highlights: ["Multi-tenant", "Carga de facturas con IA", "Motor de corte 2D", "14 módulos", "Tiempo real", "RBAC"],
           summary:
-            "Creé Lorma, un SaaS multi-tenant para fábricas de muebles que une un ERP y la optimización de corte 2D en una sola plataforma: inventario, proveedores, presupuestos, compras, planificación de producción y flujo de caja en 14 módulos integrados. Cada empresa trabaja en su propio espacio aislado.",
+            "Creé Lorma, un SaaS multi-tenant para empresas de manufactura y producción que une ERP, gestión de producción y optimización de corte 2D en una sola plataforma: inventario, proveedores, presupuestos, compras, planificación de producción y flujo de caja en 14 módulos integrados. Las facturas de proveedores se leen y cargan automáticamente con IA, y cada empresa trabaja en su propio espacio aislado.",
           clients: ["Interd", "Claxon"],
           decisions: [
             {
@@ -538,16 +541,16 @@ export const translations: Record<Language, Translations> = {
                 "Distribuye piezas rectangulares sobre placas estándar y calcula tapacantos, minimizando el desperdicio antes de que la orden llegue al taller.",
             },
             {
-              tag: "SEGURIDAD",
-              title: "PostgreSQL con RLS",
+              tag: "IA",
+              title: "Carga de facturas con IA",
               description:
-                "Prisma sobre Supabase con Row Level Security: cada lectura y escritura pasa por endpoints autenticados.",
+                "Lee las facturas de proveedores con IA y las carga en compras automáticamente, sin tipeo manual.",
             },
             {
-              tag: "ACCESOS",
-              title: "Control por roles (RBAC)",
+              tag: "SEGURIDAD",
+              title: "PostgreSQL RLS + roles",
               description:
-                "Roles ADMIN, VENTAS, DISEÑADOR y OPERARIO. Las tablets de taller solo ven colas de corte y armado.",
+                "Row Level Security en Supabase y roles ADMIN, VENTAS, DISEÑADOR y OPERARIO. Las tablets de taller solo ven sus colas.",
             },
             {
               tag: "TIEMPO REAL",

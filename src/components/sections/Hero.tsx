@@ -98,7 +98,7 @@ export function Hero() {
             </a>
 
             <FillButton
-              href={siteConfig.cvUrl}
+              href={t.hero.cvUrl}
               download
               variant="light"
               icon="download"

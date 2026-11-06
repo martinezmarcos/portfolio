@@ -50,7 +50,7 @@ export function Contact() {
             </a>
 
             <FillButton
-              href={siteConfig.cvUrl}
+              href={t.hero.cvUrl}
               download
               variant="light"
               icon="download"

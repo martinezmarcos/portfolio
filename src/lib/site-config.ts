@@ -5,11 +5,10 @@ export const siteConfig = {
   headline: "I build reliable software for real-world production and distributed systems.",
   title: "Marcos Martinez Jaime — Full Stack & Systems Developer",
   description:
-    "Full Stack & Systems Developer based in Argentina. Software developer at Interd, creator of Lorma (multi-tenant SaaS for furniture manufacturers) and co-developer of HonyCars (CRM with an AI chatbot for car dealerships).",
+    "Full Stack & Systems Developer based in Argentina. Software developer at Interd, creator of Lorma (multi-tenant SaaS for manufacturing and production companies) and co-developer of HonyCars (CRM with an AI chatbot for car dealerships).",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://marcosmartinez.dev",
   locale: "en_US",
   email: "martinezmarcostrabajo@gmail.com",
-  cvUrl: "/CV_MarcosMartinezJaime_EN.pdf",
   social: {
     github: "https://github.com/martinezmarcos",
     linkedin: "https://www.linkedin.com/in/martinez-jaime-marcos/",
