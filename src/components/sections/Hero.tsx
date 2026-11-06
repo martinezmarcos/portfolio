@@ -1,8 +1,9 @@
 "use client";
 
-import { ArrowDownRight, Download } from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/Reveal";
+import { FillButton } from "@/components/ui/FillButton";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/icons";
 import { smoothScrollTo } from "@/lib/smooth-scroll";
@@ -96,14 +97,17 @@ export function Hero() {
               <ArrowDownRight size={15} />
             </a>
 
-            <a
+            <FillButton
               href={siteConfig.cvUrl}
               download
-              className="group inline-flex items-center gap-2 rounded-xl border border-zinc-950 bg-white px-4 py-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-zinc-950 transition-colors duration-150 active:translate-y-px hover:bg-zinc-950 hover:text-white"
+              variant="light"
+              icon="download"
+              height="2.75rem"
+              radius="0.75rem"
+              className="font-sans text-xs font-semibold uppercase tracking-[0.14em]"
             >
-              <Download size={15} className="transition-transform duration-200 group-hover:translate-y-0.5" />
-              <span>{t.hero.downloadCv}</span>
-            </a>
+              {t.hero.downloadCv}
+            </FillButton>
 
             <CopyButton
               text={siteConfig.email}

@@ -2,8 +2,9 @@
 
 import { siteConfig } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/Reveal";
+import { FillButton } from "@/components/ui/FillButton";
 import { CopyButton } from "@/components/ui/CopyButton";
-import { ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/icons";
 import { useLanguage } from "@/lib/language-context";
 
@@ -48,14 +49,17 @@ export function Contact() {
               />
             </a>
 
-            <a
+            <FillButton
               href={siteConfig.cvUrl}
               download
-              className="group inline-flex items-center gap-2 rounded-full border border-zinc-950 bg-white px-6 py-3.5 font-sans text-sm font-semibold text-zinc-950 transition-colors duration-150 active:translate-y-px hover:bg-zinc-950 hover:text-white"
+              variant="light"
+              icon="download"
+              height="3.125rem"
+              radius="9999px"
+              className="font-sans text-sm font-semibold"
             >
-              <Download size={16} className="transition-transform duration-200 group-hover:translate-y-0.5" />
-              <span>{t.hero.downloadCv}</span>
-            </a>
+              {t.hero.downloadCv}
+            </FillButton>
 
             <CopyButton
               text={siteConfig.email}

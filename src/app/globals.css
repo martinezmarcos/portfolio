@@ -97,3 +97,110 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Fill button: right-hand circle expands to cover the button on hover */
+@layer components {
+  .fill-btn {
+    --fill-h: 3rem;
+    --fill-r: 9999px;
+    --fill-inset: 0.375rem;
+    --fill-ease: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    --btn-bg: #09090b;
+    --btn-fg: #ffffff;
+    --btn-fill-bg: #ffffff;
+    --btn-fill-fg: #09090b;
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    height: var(--fill-h);
+    padding-left: 1.5rem;
+    padding-right: calc(var(--fill-h) + 0.5rem);
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: var(--fill-r);
+    outline: 1px solid #09090b;
+    outline-offset: -1px;
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .fill-btn--light {
+    --btn-bg: #ffffff;
+    --btn-fg: #09090b;
+    --btn-fill-bg: #09090b;
+    --btn-fill-fg: #ffffff;
+  }
+
+  .fill-btn__text {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .fill-btn__circle {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    padding-right: calc(var(--fill-h) + 0.5rem);
+    background: var(--btn-fill-bg);
+    color: var(--btn-fill-fg);
+    clip-path: inset(
+      var(--fill-inset) var(--fill-inset) var(--fill-inset)
+        calc(100% - var(--fill-h) + var(--fill-inset)) round var(--fill-r)
+    );
+    transition: clip-path 0.45s var(--fill-ease);
+  }
+
+  .fill-btn__circle-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .fill-btn__icon {
+    position: absolute;
+    right: calc(var(--fill-h) / 2 - 0.375rem);
+    width: 0.75rem;
+    height: 0.75rem;
+    overflow: hidden;
+  }
+
+  .fill-btn__path {
+    fill: currentColor;
+    transform-origin: 50% center;
+    transition: transform 0.45s var(--fill-ease);
+  }
+
+  .fill-btn__path:first-child {
+    transform: translateX(-120%) scale(0);
+  }
+
+  .fill-btn:is(:hover, :focus-visible) .fill-btn__circle {
+    clip-path: inset(0 round var(--fill-r));
+  }
+
+  .fill-btn:is(:hover, :focus-visible) .fill-btn__path:first-child {
+    transform: translateX(0) scale(1);
+  }
+
+  .fill-btn:is(:hover, :focus-visible) .fill-btn__path:last-child {
+    transform: translateX(120%) scale(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fill-btn__circle,
+    .fill-btn__path {
+      transition: none;
+    }
+  }
+}

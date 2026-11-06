@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { FillButton } from "@/components/ui/FillButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { useLanguage } from "@/lib/language-context";
 import type { ExperienceItem } from "@/lib/translations";
@@ -76,19 +76,15 @@ function ExperienceCard({
             {item.tagline}
           </p>
 
-          <a
+          <FillButton
             href={item.url}
-            target="_blank"
-            rel="noreferrer"
-            className="group mt-8 inline-flex items-center gap-3 rounded-full bg-zinc-950 py-2 pl-5 pr-2 font-sans text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
+            external
+            ariaLabel={`${visit} ${item.urlLabel}`}
+            className="mt-8"
           >
-            <span>
-              {visit} <span className="font-mono font-normal text-zinc-400">{item.urlLabel}</span>
-            </span>
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-zinc-950">
-              <ArrowUpRight size={16} />
-            </span>
-          </a>
+            {visit}
+            <span className="font-mono text-[0.8125rem] font-normal opacity-60">{item.urlLabel}</span>
+          </FillButton>
 
           {item.clients && (
             <div className="mt-8">
