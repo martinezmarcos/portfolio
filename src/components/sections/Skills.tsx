@@ -49,17 +49,17 @@ export function Skills() {
                   {section.items.map((skill) => (
                     <div
                       key={skill.name}
-                      className="rounded-xl border border-zinc-200/70 bg-white p-4 transition-all duration-200 hover:border-zinc-300 hover:shadow-sm"
+                      className="row-span-2 grid grid-rows-subgrid gap-y-2 rounded-xl border border-zinc-200/70 bg-white p-4 transition-colors duration-200 hover:border-zinc-300"
                     >
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-start justify-between gap-3">
                         <span className="font-sans text-sm font-semibold text-zinc-900">
                           {skill.name}
                         </span>
-                        <span className="rounded bg-zinc-100 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-zinc-600 font-medium">
+                        <span className="mt-px shrink-0 rounded bg-zinc-100 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-zinc-600 font-medium">
                           {skill.level}
                         </span>
                       </div>
-                      <p className="mt-2 text-[14px] leading-relaxed text-zinc-600">
+                      <p className="text-[14px] leading-relaxed text-zinc-600">
                         {skill.description}
                       </p>
                     </div>
