@@ -256,7 +256,7 @@ export const translations: Record<Language, Translations> = {
             { label: "Scope", value: "14", subtext: "Modules" },
             { label: "Sync", value: "Live", subtext: "Real-time" },
           ],
-          stack: ["React 19", "Next.js 16", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Tailwind CSS v4", "Vercel"],
+          stack: ["React", "Vite", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Tesseract.js", "Tailwind CSS", "Vercel"],
         },
         {
           id: "honycars",
@@ -561,7 +561,7 @@ export const translations: Record<Language, Translations> = {
             { label: "Alcance", value: "14", subtext: "Módulos" },
             { label: "Sync", value: "Live", subtext: "Tiempo real" },
           ],
-          stack: ["React 19", "Next.js 16", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Tailwind CSS v4", "Vercel"],
+          stack: ["React", "Vite", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Tesseract.js", "Tailwind CSS", "Vercel"],
         },
         {
           id: "honycars",
