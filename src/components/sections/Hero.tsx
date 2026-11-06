@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDownRight, Terminal } from "lucide-react";
+import { ArrowDownRight, Download, Terminal } from "lucide-react";
 import { motion } from "motion/react";
 import { siteConfig } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/Reveal";
@@ -12,9 +12,9 @@ import { useLanguage } from "@/lib/language-context";
 export function Hero() {
   const { t } = useLanguage();
 
-  const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollToExperience = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    smoothScrollTo("#projects", 85);
+    smoothScrollTo("#experience", 85);
   };
 
   return (
@@ -93,8 +93,8 @@ export function Hero() {
         <Reveal delay={0.24}>
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <motion.a
-              href="#projects"
-              onClick={handleScrollToProjects}
+              href="#experience"
+              onClick={handleScrollToExperience}
               whileHover={{ scale: 1.03, y: -1 }}
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.2 }}
@@ -102,6 +102,18 @@ export function Hero() {
             >
               <span>{t.hero.ctaProjects}</span>
               <ArrowDownRight size={15} />
+            </motion.a>
+
+            <motion.a
+              href={siteConfig.cvUrl}
+              download
+              whileHover={{ scale: 1.03, y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.2 }}
+              className="group inline-flex items-center gap-2 rounded-xl border border-zinc-950 bg-white px-4 py-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-zinc-950 transition-all hover:bg-zinc-950 hover:text-white"
+            >
+              <Download size={15} className="transition-transform duration-200 group-hover:translate-y-0.5" />
+              <span>{t.hero.downloadCv}</span>
             </motion.a>
 
             <CopyButton

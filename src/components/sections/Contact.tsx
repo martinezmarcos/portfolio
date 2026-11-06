@@ -3,7 +3,7 @@
 import { siteConfig } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/Reveal";
 import { CopyButton } from "@/components/ui/CopyButton";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/icons";
 import { motion } from "motion/react";
 import { useLanguage } from "@/lib/language-context";
@@ -50,6 +50,18 @@ export function Contact() {
                 size={16}
                 className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
+            </motion.a>
+
+            <motion.a
+              href={siteConfig.cvUrl}
+              download
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              className="group inline-flex items-center gap-2 rounded-full border border-zinc-950 bg-white px-6 py-3.5 font-sans text-sm font-semibold text-zinc-950 transition-all hover:bg-zinc-950 hover:text-white"
+            >
+              <Download size={16} className="transition-transform duration-200 group-hover:translate-y-0.5" />
+              <span>{t.hero.downloadCv}</span>
             </motion.a>
 
             <CopyButton

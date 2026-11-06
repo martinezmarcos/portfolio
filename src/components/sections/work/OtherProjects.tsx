@@ -1,295 +1,70 @@
 "use client";
 
-import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
-import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { GitHubIcon } from "@/components/ui/icons";
 import { useLanguage } from "@/lib/language-context";
 
 export function OtherProjects() {
   const { t } = useLanguage();
-  const pSection = t.projectsSection;
-  const [activeCategoryId, setActiveCategoryId] = useState<string>("All");
-
-  const filteredProjects =
-    activeCategoryId === "All"
-      ? pSection.items
-      : pSection.items.filter(
-          (p) =>
-            p.category === activeCategoryId ||
-            (p.categories ? p.categories.some((cat) => cat === activeCategoryId) : false)
-        );
+  const p = t.projectsSection;
 
   return (
-    <div id="projects" className="mt-32 border-t border-zinc-200/80 pt-24 scroll-mt-28">
-      {/* Section Header & Architectural Switcher */}
+    <div id="projects" className="scroll-mt-28">
       <Reveal>
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-xs font-semibold text-zinc-400">{pSection.sectionNum}</span>
-              <span className="h-3 w-px bg-zinc-300" />
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
-                {pSection.sectionTag}
-              </span>
-            </div>
-            <h3 className="mt-3 text-3xl font-medium tracking-tight text-zinc-950 sm:text-4xl">
-              {pSection.title}
-            </h3>
-            <p className="mt-2.5 max-w-xl text-[16px] leading-relaxed text-zinc-600">
-              {pSection.subtitle}
-            </p>
-          </div>
-
-          {/* Solid Category Switcher */}
-          <div className="flex items-center gap-1 overflow-x-auto no-scrollbar rounded-full border border-black/10 bg-zinc-100/80 p-1.5 backdrop-blur-xl shadow-sm max-w-full">
-            {pSection.categories.map((cat) => {
-              const isActive = activeCategoryId === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  onClick={() => setActiveCategoryId(cat.id)}
-                  className={`rounded-full px-4 py-1.5 font-sans text-xs font-medium whitespace-nowrap transition-all duration-200 outline-none ${
-                    isActive
-                      ? "bg-zinc-950 text-white font-semibold shadow-sm"
-                      : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/60"
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              );
-            })}
-          </div>
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-xs font-semibold text-zinc-400">{p.sectionNum}</span>
+          <span className="h-3 w-px bg-zinc-300" />
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">{p.sectionTag}</span>
         </div>
+        <h2 className="mt-3 text-2xl font-medium tracking-tight text-zinc-950 sm:text-3xl">{p.title}</h2>
+        <p className="mt-2 max-w-xl text-[15.5px] leading-relaxed text-zinc-600">{p.subtitle}</p>
       </Reveal>
 
-      {/* Projects Grid with Spotlight Glow */}
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {filteredProjects.map((project) => {
-          if (project.featured) {
-            return (
-              <SpotlightCard
-                key={project.id}
-                spotlightColor="rgba(0, 0, 0, 0.05)"
-                className="relative md:col-span-2 border-zinc-300/90 bg-white ring-1 ring-zinc-900/5 p-6 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-200/70"
-              >
-                {/* Meta Header */}
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-200/90 pb-5">
-                  <div className="flex flex-wrap items-center gap-2.5">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-3 py-1 font-mono text-[11px] font-semibold text-white shadow-sm">
-                      <span className="relative flex h-2 w-2">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
-                      </span>
-                      <span>{project.featuredBadge}</span>
-                    </span>
-                    <span className="rounded-md border border-zinc-200 bg-zinc-100/90 px-2.5 py-1 font-mono text-[11px] font-semibold text-zinc-800">
-                      {project.typeTag}
-                    </span>
-                    <span className="hidden sm:inline text-zinc-300">·</span>
-                    <span className="font-mono text-xs font-semibold text-emerald-600">
-                      {project.complexity}
-                    </span>
-                  </div>
-
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`View ${project.title} on GitHub`}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-3.5 py-1.5 font-sans text-xs font-medium text-zinc-700 transition-all hover:border-zinc-950 hover:bg-zinc-950 hover:text-white shadow-2xs"
-                  >
-                    <GitHubIcon size={14} />
-                    <span>{pSection.source}</span>
-                    <ArrowUpRight size={13} />
-                  </a>
-                </div>
-
-                {/* 2-Column Responsive Layout */}
-                <div className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-start">
-                  {/* Left Column: Narrative, Highlights, Stack & Action */}
-                  <div className="flex flex-col justify-between lg:col-span-7">
-                    <div>
-                      <h4 className="text-2xl sm:text-3xl font-medium tracking-tight text-zinc-950">
-                        {project.title}
-                      </h4>
-                      <p className="mt-1.5 font-sans text-sm sm:text-[15.5px] font-medium text-zinc-500">
-                        {project.tagline}
-                      </p>
-
-                      <p className="mt-4 text-[15.5px] leading-[1.75] text-zinc-600">
-                        {project.description}
-                      </p>
-
-                      {project.highlights && (
-                        <div className="mt-5 flex flex-wrap gap-2">
-                          {project.highlights.map((highlight) => (
-                            <span
-                              key={highlight}
-                              className="inline-flex items-center gap-1.5 rounded-md border border-zinc-200/90 bg-zinc-50 px-2.5 py-1 font-mono text-[11.5px] font-medium text-zinc-700"
-                            >
-                              <span className="h-1.5 w-1.5 rounded-full bg-zinc-900" />
-                              {highlight}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="mt-8 border-t border-zinc-200/80 pt-5">
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.stack.map((tech) => (
-                          <span
-                            key={tech}
-                            className="rounded border border-zinc-200 bg-zinc-100/90 px-2.5 py-0.5 font-mono text-[11px] font-medium text-zinc-800"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="mt-5 flex items-center gap-3">
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="group inline-flex items-center gap-2 rounded-lg bg-zinc-950 px-4 py-2 font-sans text-xs font-medium uppercase tracking-[0.14em] text-white shadow-sm transition-all hover:bg-zinc-800 hover:shadow"
-                        >
-                          <span>{pSection.viewRepo}</span>
-                          <ArrowUpRight
-                            size={14}
-                            className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right Column: Architectural Telemetry Box */}
-                  <div className="rounded-xl border border-zinc-200/90 bg-zinc-50/70 p-5 sm:p-6 lg:col-span-5 flex flex-col justify-between h-full">
-                    <div>
-                      <div className="flex items-center justify-between border-b border-zinc-200/80 pb-3">
-                        <p className="font-mono text-[11px] uppercase tracking-wider font-semibold text-zinc-500">
-                          {pSection.systemMechanics}
-                        </p>
-                        <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-widest">
-                          TELEMETRY
-                        </span>
-                      </div>
-
-                      <div className="mt-4 space-y-3">
-                        {project.architectureBreakdown.map((item) => (
-                          <div
-                            key={item.label}
-                            className="grid grid-cols-12 gap-2 text-xs font-mono"
-                          >
-                            <span className="col-span-5 text-zinc-500 font-medium truncate">{item.label}:</span>
-                            <span className="col-span-7 text-zinc-800 leading-snug">{item.detail}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mt-5 border-t border-zinc-200/80 pt-3 text-[11px] font-mono text-zinc-500 flex items-center justify-between">
-                      <span className="text-zinc-600 font-medium">Zero ML Frameworks</span>
-                      <span className="text-zinc-400">Pure Rust Systems</span>
-                    </div>
-                  </div>
-                </div>
-              </SpotlightCard>
-            );
-          }
-
-          return (
-            <SpotlightCard
-              key={project.id}
-              className="flex h-full flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-200/60"
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {p.items.map((project, index) => (
+          <Reveal key={project.id} delay={index * 0.04} className="h-full">
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${project.title} — ${p.source}`}
+              className="group flex h-full flex-col justify-between rounded-xl border border-zinc-200/90 bg-zinc-50/50 p-5 transition-all duration-200 hover:border-zinc-300 hover:bg-white hover:shadow-md"
             >
               <div>
-                {/* Meta Header */}
-                <div className="flex items-center justify-between border-b border-zinc-200/80 pb-4">
-                  <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-500">
-                    <span className="rounded bg-zinc-100 px-2 py-0.5 font-semibold text-zinc-700">
-                      {project.typeTag}
-                    </span>
-                    <span className="text-zinc-300">·</span>
-                    <span className="text-emerald-600 font-medium">{project.complexity}</span>
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-wider text-zinc-500">
+                    <span>{project.typeTag}</span>
+                    {project.featured && (
+                      <span className="rounded bg-zinc-950 px-1.5 py-0.5 font-semibold text-white">
+                        {p.featuredLabel}
+                      </span>
+                    )}
                   </div>
-
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`View ${project.title} on GitHub`}
-                    className="flex items-center gap-1.5 font-sans text-xs font-medium text-zinc-600 transition-colors hover:text-zinc-950"
-                  >
+                  <span className="flex items-center gap-1 text-zinc-400 transition-colors group-hover:text-zinc-950">
                     <GitHubIcon size={14} />
-                    <span>{pSection.source}</span>
-                    <ArrowUpRight size={13} />
-                  </a>
+                    <ArrowUpRight
+                      size={13}
+                      className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </span>
                 </div>
-
-                {/* Human Title & Tagline */}
-                <h4 className="mt-5 text-2xl font-medium tracking-tight text-zinc-950 group-hover:text-black">
-                  {project.title}
-                </h4>
-                <p className="mt-1 font-sans text-sm text-zinc-500">
-                  {project.tagline}
-                </p>
-
-                {/* Narrative Description */}
-                <p className="mt-4 text-[15.5px] leading-[1.72] text-zinc-600">
-                  {project.description}
-                </p>
-
-                {/* Architectural Breakdown Box */}
-                <div className="mt-6 rounded-xl border border-zinc-200/90 bg-zinc-50/70 p-4 space-y-2.5">
-                  <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">
-                    {pSection.systemMechanics}
-                  </p>
-                  {project.architectureBreakdown.map((item) => (
-                    <div
-                      key={item.label}
-                      className="grid grid-cols-12 gap-2 text-xs font-mono"
-                    >
-                      <span className="col-span-5 text-zinc-500 truncate">{item.label}:</span>
-                      <span className="col-span-7 text-zinc-800">{item.detail}</span>
-                    </div>
-                  ))}
-                </div>
+                <h3 className="mt-3 text-lg font-medium tracking-tight text-zinc-950">{project.title}</h3>
+                <p className="mt-1.5 text-[14px] leading-relaxed text-zinc-600">{project.tagline}</p>
               </div>
-
-              {/* Footer with Stack & Direct Action */}
-              <div className="mt-8 border-t border-zinc-200/80 pt-5">
-                <div className="flex flex-wrap gap-1.5">
-                  {project.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded border border-zinc-200 bg-zinc-100/80 px-2.5 py-0.5 font-mono text-[11px] text-zinc-700"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group mt-5 inline-flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-[0.14em] text-zinc-950 transition-opacity hover:opacity-75"
-                >
-                  <span>{pSection.viewRepo}</span>
-                  <ArrowUpRight
-                    size={14}
-                    className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
-                </a>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {project.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded border border-zinc-200 bg-white px-2 py-0.5 font-mono text-[10.5px] text-zinc-600"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
-            </SpotlightCard>
-          );
-        })}
+            </a>
+          </Reveal>
+        ))}
       </div>
     </div>
   );

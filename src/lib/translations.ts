@@ -20,19 +20,28 @@ export type ArchitectureBreakdownItem = {
 export type OtherProject = {
   id: string;
   title: string;
-  category: "All" | "Distributed Systems" | "AI & RAG" | "Low-Level & C++";
-  categoryLabel: string;
   typeTag: string;
-  complexity: string;
   tagline: string;
-  description: string;
-  architectureBreakdown: ArchitectureBreakdownItem[];
   stack: string[];
   link: string;
   featured?: boolean;
-  featuredBadge?: string;
-  highlights?: string[];
-  categories?: ("All" | "Distributed Systems" | "AI & RAG" | "Low-Level & C++")[];
+};
+
+export type ExperienceItem = {
+  id: string;
+  company: string;
+  role: string;
+  period: string;
+  url: string;
+  urlLabel: string;
+  badge: string;
+  summary: string;
+  bullets?: string[];
+  clients?: string[];
+  stack?: string[];
+  decisions?: Decision[];
+  metrics?: Metric[];
+  preview?: { src: string; alt: string; width: number; height: number };
 };
 
 export type SkillItem = {
@@ -85,30 +94,24 @@ export type Translations = {
     };
     ctaProjects: string;
     ctaContact: string;
+    downloadCv: string;
   };
-  featured: {
+  experienceSection: {
     sectionNum: string;
     sectionTag: string;
-    status: string;
     title: string;
     subtitle: string;
-    problemTitle: string;
-    problemText: string;
-    solutionTitle: string;
-    solutionText: string;
+    visit: string;
+    usedBy: string;
     decisionsHeader: string;
-    decisions: Decision[];
-    metrics: Metric[];
-    confidentiality: string;
+    items: ExperienceItem[];
   };
   projectsSection: {
     sectionNum: string;
     sectionTag: string;
     title: string;
     subtitle: string;
-    categories: { id: string; label: string }[];
-    systemMechanics: string;
-    viewRepo: string;
+    featuredLabel: string;
     source: string;
     items: OtherProject[];
     allRepos: string;
@@ -151,10 +154,10 @@ export type Translations = {
 export const translations: Record<Language, Translations> = {
   en: {
     nav: {
-      work: "Work",
+      work: "Experience",
       projects: "Projects",
       skills: "Skills",
-      timeline: "Timeline",
+      timeline: "Education",
       about: "About",
       contact: "Contact",
       menu: "Menu",
@@ -165,10 +168,10 @@ export const translations: Record<Language, Translations> = {
       location: "Buenos Aires, AR",
       headline: "Building software that survives real production and concurrency.",
       summary:
-        "I architect and maintain a multi-tenant operations SaaS powering daily industrial production across multiple companies. My engineering focus bridges distributed high-concurrency systems (atomic Redis locks, PostgreSQL RLS, pgvector RAG) with low-level C++20 data structures and memory mechanics.",
+        "Software developer at Interd. I created Lorma, a multi-tenant SaaS that runs the daily operations of two manufacturing companies, and I co-develop HonyCars, a CRM with an AI chatbot for car dealerships. On the side, I build low-level systems in Rust and C++20.",
       metrics: {
-        companiesValue: "+4",
-        companiesLabel: "Companies in Daily SaaS",
+        companiesValue: "2",
+        companiesLabel: "Companies on Lorma Daily",
         lruValue: "O(1)",
         lruLabel: "Amortized LRU Cache",
         ragValue: "81%",
@@ -176,198 +179,156 @@ export const translations: Record<Language, Translations> = {
         systemsValue: "C++20",
         systemsLabel: "& Next.js Full Stack",
       },
-      ctaProjects: "Inspect Projects",
+      ctaProjects: "View Experience",
       ctaContact: "Get in touch",
+      downloadCv: "Download CV",
     },
-    featured: {
+    experienceSection: {
       sectionNum: "01",
-      sectionTag: "Flagship Production Platform",
-      status: "Multi-Tenant Enterprise SaaS — Active Daily Use",
-      title: "Enterprise Operations Platform",
+      sectionTag: "Professional Experience",
+      title: "Software in production, used by real businesses.",
       subtitle:
-        "Multi-tenant ERP & 2D Cutting Optimization Platform utilized daily by multiple manufacturing companies",
-      problemTitle: "The Industrial Bottleneck",
-      problemText:
-        "Multiple manufacturing and production operations historically coordinated workflows through disconnected spreadsheets, paper job sheets, and manual messaging. Material stock, cutting schedules, client quotes, and purchase orders lacked a unified source of truth, creating material waste on panel boards, delayed shop floor handoffs, and zero real-time cost visibility.",
-      solutionTitle: "Engineered Solution",
-      solutionText:
-        "An integrated 14-module enterprise web platform. Features an algorithmic 2D cut optimization engine that packs rectangular panel orders onto standard sheets, real-time inventory and supplier management, dynamic quotes and budget generation, granular role-based permissions, technical CAD drawing repository, production job scheduling, and cash flow tracking across multiple isolated company workspaces.",
-      decisionsHeader: "Core Architectural Decisions",
-      decisions: [
+        "Products I build and maintain every day: a company website, a multi-tenant SaaS, and a CRM with an AI chatbot.",
+      visit: "Visit",
+      usedBy: "Used daily by",
+      decisionsHeader: "Key technical decisions",
+      items: [
         {
-          tag: "ALGORITHM",
-          title: "Algorithmic 2D Cut Optimization Engine",
-          description:
-            "Engineered a cutting optimization algorithm that packs rectangular panel requirements onto standard sheets and calculates linear PVC edging requirements, minimizing raw material offcuts before releasing jobs to the floor.",
+          id: "interd",
+          company: "Interd",
+          role: "Software Developer",
+          period: "Present",
+          url: "https://interd.com.ar",
+          urlLabel: "interd.com.ar",
+          badge: "Current Role",
+          summary:
+            "Software developer at Interd, a Buenos Aires studio that designs and manufactures shop windows, stands, displays, and commercial furniture for brands such as Chandon and Warsteiner.",
+          bullets: [
+            "Designed and developed the company website, interd.com.ar: studio, services, process, and a filterable portfolio of client projects",
+            "Built the contact and lead-capture form with spam protection, plus responsive, optimized imagery",
+            "Develop the internal software that runs the studio's day-to-day operations (Lorma)",
+          ],
         },
         {
-          tag: "SECURITY",
-          title: "PostgreSQL with Strict Row Level Security (RLS)",
-          description:
-            "Managed via Prisma ORM on Supabase. Public client-side access is completely blocked with Postgres RLS policies, ensuring all database reads and writes pass through authenticated serverless endpoints.",
+          id: "lorma",
+          company: "Lorma",
+          role: "Creator & Lead Developer",
+          period: "Jan 2025 — Present",
+          url: "https://lorma.site",
+          urlLabel: "lorma.site",
+          badge: "Production SaaS",
+          summary:
+            "I created Lorma, a multi-tenant SaaS for furniture manufacturers that combines an ERP and 2D cutting optimization in one platform: inventory, suppliers, quotes, purchase orders, production scheduling, and cash flow across 14 integrated modules. Each company works in its own isolated workspace.",
+          clients: ["Interd", "Claxon"],
+          decisions: [
+            {
+              tag: "ALGORITHM",
+              title: "2D cut optimization",
+              description:
+                "Packs rectangular panels onto standard sheets and calculates PVC edging, minimizing offcuts before jobs reach the shop floor.",
+            },
+            {
+              tag: "SECURITY",
+              title: "PostgreSQL with RLS",
+              description:
+                "Prisma on Supabase with Row Level Security: every read and write goes through authenticated endpoints.",
+            },
+            {
+              tag: "ACCESS",
+              title: "Role-based access (RBAC)",
+              description:
+                "ADMIN, SALES, DESIGNER, and OPERATOR roles. Workshop tablets only see cutting and assembly queues.",
+            },
+            {
+              tag: "REALTIME",
+              title: "Live shop floor sync",
+              description:
+                "Supabase Realtime broadcast channels sync job queues and stock across devices without polling.",
+            },
+          ],
+          metrics: [
+            { label: "Companies", value: "2", subtext: "Interd & Claxon" },
+            { label: "Scope", value: "14", subtext: "Modules" },
+            { label: "Sync", value: "Live", subtext: "Real-time" },
+          ],
+          stack: ["React 19", "Next.js 16", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Tailwind CSS v4", "Vercel"],
+          preview: { src: "/dashboard-preview.png", alt: "Lorma dashboard", width: 1910, height: 854 },
         },
         {
-          tag: "ACCESS CONTROL",
-          title: "Granular Role-Based Access Control (RBAC)",
-          description:
-            "Enforces strict separation between ADMIN, SALES, DESIGNER, and OPERATOR. Workshop tablets access only real-time cutting and assembly queues, while executive financials and supplier margins remain strictly protected.",
-        },
-        {
-          tag: "REALTIME",
-          title: "Real-time Workshop Floor Synchronization",
-          description:
-            "Utilizes Supabase Realtime Broadcast channels to synchronize workshop job queues and inventory changes instantly across shop floor tablets without database polling.",
+          id: "honycars",
+          company: "HonyCars",
+          role: "Co-developer",
+          period: "Present",
+          url: "https://honycars.com",
+          urlLabel: "honycars.com",
+          badge: "CRM + AI",
+          summary:
+            "Co-developer of HonyCars, a CRM for car dealerships in Argentina that centralizes every inquiry so each lead has an owner, a response, and a next step.",
+          bullets: [
+            "Unified lead inbox for WhatsApp, Instagram, Mercado Libre, email, web forms, and showroom visits, with assignment and follow-ups per salesperson",
+            "“Hony”, an AI chatbot that answers on WhatsApp using the dealership's real stock, discards any reply with figures not backed by its data, and hands off to a person on request",
+            "Stock with photos and pricing, PDF quotes, and funnel metrics: first-response time, team ranking, and lost-sale reasons",
+          ],
         },
       ],
-      metrics: [
-        { label: "Architecture", value: "Multi-Tenant", subtext: "Active in production" },
-        { label: "Scope", value: "14 Modules", subtext: "End-to-end operations platform" },
-        { label: "Sync Engine", value: "Real-time", subtext: "Instant order & stock sync" },
-      ],
-      confidentiality:
-        "Private enterprise system — client identities, operational metrics, and proprietary cutting jobs redacted for confidentiality.",
     },
     projectsSection: {
       sectionNum: "02",
-      sectionTag: "Core Systems & Algorithmic Work",
-      title: "Systems, Concurrency & Low-Level Engineering",
-      subtitle:
-        "Deterministic architectures, multithreaded C++ data structures, and production-tested distributed locking mechanisms.",
-      categories: [
-        { id: "All", label: "All" },
-        { id: "Distributed Systems", label: "Distributed Systems" },
-        { id: "AI & RAG", label: "AI & RAG" },
-        { id: "Low-Level & C++", label: "Low-Level & C++" },
-      ],
-      systemMechanics: "System Mechanics",
-      viewRepo: "View Repository on GitHub",
+      sectionTag: "Side Projects",
+      title: "Systems & low-level engineering",
+      subtitle: "Open source projects where I explore performance, concurrency, and data structures.",
+      featuredLabel: "Featured",
       source: "Source",
-      allRepos: "View all open source repositories on GitHub →",
+      allRepos: "View all repositories on GitHub →",
       items: [
         {
           id: "llm-inference-engine",
           title: "LLM Inference Engine",
-          category: "Low-Level & C++",
-          categories: ["Low-Level & C++", "AI & RAG"],
-          categoryLabel: "Low-Level & Systems",
-          typeTag: "Zero-Framework Systems",
-          complexity: "Zero-Alloc Hot Loop",
+          typeTag: "Rust",
           featured: true,
-          featuredBadge: "Flagship Systems Architecture · Pure Rust",
-          tagline: "High-performance from-scratch Transformer LLM inference engine in Rust with zero ML frameworks",
-          description:
-            "Engineered completely from scratch in Rust with zero machine learning dependencies (no PyTorch, Candle, or ONNX). Implements the complete low-level systems pipeline required to execute modern decoder-only Transformers on CPU: custom GGUF binary parser with zero-copy memory mapping (mmap), a multi-dimensional tensor runtime with cache-conscious row-major memory layouts, a zero-allocation autoregressive decoding loop, and multi-threaded parallel execution via Rayon.",
-          highlights: [
-            "Zero-Allocation Hot Path",
-            "Zero-Copy GGUF mmap Parser",
-            "O(1) Autoregressive KV Cache",
-            "Rayon Multithreaded Matmul",
-          ],
-          architectureBreakdown: [
-            { label: "Model Ingestion", detail: "GGUF v2/v3 binary parser with zero-copy mmap" },
-            { label: "Memory Topology", detail: "Zero-allocation autoregressive decoding hot loop" },
-            { label: "Transformer Ops", detail: "GQA, RoPE embeddings, RMSNorm & SwiGLU FFN" },
-            { label: "Attention Acceleration", detail: "O(1) Autoregressive KV Cache eliminating recomputation" },
-            { label: "Parallel Compute", detail: "Data-parallel tensor kernels & matmul via Rayon" },
-            { label: "Quantization", detail: "Block INT8 (Q8_0) & INT4 (Q4_0) specialized dot products" },
-          ],
-          stack: ["Rust", "GGUF", "Rayon", "mmap", "Transformer", "SIMD", "KV Cache", "BPE Tokenizer"],
+          tagline: "Transformer inference engine written from scratch in Rust, with zero ML frameworks: GGUF mmap parser, KV cache, and INT8/INT4 quantization.",
+          stack: ["Rust", "Rayon", "GGUF", "SIMD"],
           link: "https://github.com/martinezmarcos/LLM-Inference-Engine",
-        },
-        {
-          id: "lru-cache",
-          title: "LRU Cache",
-          category: "Low-Level & C++",
-          categoryLabel: "Low-Level & C++",
-          typeTag: "Concurrent C++20",
-          complexity: "O(1) Amortized",
-          tagline: "Multithreaded C++20 Least-Recently-Used cache with O(1) operations",
-          description:
-            "Thread-safe Least Recently Used (LRU) memory cache implemented in modern C++20. Combines a doubly-linked list for constant-time eviction ordering with an unordered hash map for instantaneous key lookup, guarded by fine-grained reader-writer locks.",
-          architectureBreakdown: [
-            { label: "Time Complexity", detail: "O(1) get & put operations" },
-            { label: "Synchronization", detail: "std::shared_mutex for concurrent reads" },
-            { label: "Memory Topology", detail: "std::list + std::unordered_map" },
-            { label: "Standard", detail: "Compiled with -std=c++20 and strict sanitizers" },
-          ],
-          stack: ["C++20", "STL", "Concurrency", "CMake", "GoogleTest"],
-          link: "https://github.com/martinezmarcos/LRUCache",
-        },
-        {
-          id: "bloom-filter",
-          title: "Bloom Filter",
-          category: "Low-Level & C++",
-          categoryLabel: "Low-Level & C++",
-          typeTag: "Probabilistic Data Structure",
-          complexity: "O(k) Hash Bounds",
-          tagline: "Space-efficient probabilistic filter with zero false negatives",
-          description:
-            "High-throughput probabilistic membership testing structure in C++. Uses MurmurHash3 and double-hashing techniques to achieve optimal false-positive probability tuning under strict byte-budget memory constraints.",
-          architectureBreakdown: [
-            { label: "Hash Strategy", detail: "Kirsch-Mitzenmacher double hashing" },
-            { label: "Bit Array", detail: "std::vector<bool> memory bitset representation" },
-            { label: "False Negatives", detail: "Guaranteed 0% by mathematical proof" },
-            { label: "Verification", detail: "Empirical collision distribution testing" },
-          ],
-          stack: ["C++20", "MurmurHash3", "Algorithms", "CMake", "Catch2"],
-          link: "https://github.com/martinezmarcos/bloomFilterProject",
-        },
-        {
-          id: "turing-machine",
-          title: "Turing Machine",
-          category: "Low-Level & C++",
-          categoryLabel: "Low-Level & C++",
-          typeTag: "Automata & Computation",
-          complexity: "Deterministic TM",
-          tagline: "Deterministic theoretical automata simulator in modern C++",
-          description:
-            "Complete simulator of a deterministic single-tape Turing Machine. Reads declarative transition graphs, manages dynamic bi-infinite tape memory, and executes step-by-step state transitions with trace telemetry.",
-          architectureBreakdown: [
-            { label: "Tape Model", detail: "Dynamic bi-directional tape with auto-expansion" },
-            { label: "Transition Engine", detail: "Lookup matrix with O(1) transition dispatch" },
-            { label: "Debugging", detail: "Execution state snapshot & step trace logger" },
-            { label: "Standard", detail: "Modern C++20 standard compliance" },
-          ],
-          stack: ["C++20", "Automata Theory", "Computation", "CMake"],
-          link: "https://github.com/martinezmarcos/turingMachine",
         },
         {
           id: "cancha-directa",
           title: "Cancha Directa",
-          category: "Distributed Systems",
-          categoryLabel: "Distributed Systems",
-          typeTag: "Full Stack & Concurrency",
-          complexity: "Sub-50ms Locking",
-          tagline: "High-concurrency sports booking platform with atomic Redis reservation locks",
-          description:
-            "Production booking engine engineered to prevent slot double-booking during peak traffic spikes. Features atomic Redis reservation locks with automatic TTL expiration, PostgreSQL transaction isolation, and live calendar synchronization.",
-          architectureBreakdown: [
-            { label: "Concurrency", detail: "Redis distributed locks with deterministic TTL" },
-            { label: "Database", detail: "PostgreSQL with row-level transaction safety" },
-            { label: "Frontend", detail: "Next.js App Router with optimistic UI updates" },
-            { label: "Edge Gateway", detail: "Upstash Redis with regional sub-15ms latency" },
-          ],
-          stack: ["Next.js", "TypeScript", "Redis", "PostgreSQL", "Tailwind CSS", "Prisma"],
+          typeTag: "Distributed Systems",
+          tagline: "Booking engine that prevents double-booking with atomic Redis locks and a PostgreSQL constraint as backstop.",
+          stack: ["Next.js", "Redis", "PostgreSQL"],
           link: "https://github.com/martinezmarcos/cancha-directa",
         },
         {
           id: "claude-docs",
           title: "Claude Docs Navigator",
-          category: "AI & RAG",
-          categoryLabel: "AI & RAG",
-          typeTag: "Vector Search & Retrieval",
-          complexity: "Recall@5: 81%",
-          tagline: "Semantic RAG search engine over Anthropic official docs with pgvector embeddings",
-          description:
-            "Dense retrieval system that ingests Anthropic's official technical documentation, splits content into semantic markdown chunks, generates vector embeddings, and performs cosine similarity queries with hybrid BM25 re-ranking.",
-          architectureBreakdown: [
-            { label: "Vector Engine", detail: "pgvector with HNSW indexing for sub-20ms queries" },
-            { label: "Embeddings", detail: "text-embedding-3-small (1536-dimensional space)" },
-            { label: "Chunking", detail: "Hierarchical markdown AST structure-aware splitting" },
-            { label: "Accuracy", detail: "81% Recall@5 evaluated across 120 synthetic queries" },
-          ],
-          stack: ["Next.js", "TypeScript", "PostgreSQL", "pgvector", "OpenAI API", "Tailwind CSS"],
+          typeTag: "AI & RAG",
+          tagline: "RAG assistant over Anthropic's documentation with pgvector search and cited answers. 81% Recall@5.",
+          stack: ["Next.js", "pgvector", "PostgreSQL"],
           link: "https://github.com/martinezmarcos/rag",
+        },
+        {
+          id: "lru-cache",
+          title: "LRU Cache",
+          typeTag: "C++20",
+          tagline: "Thread-safe LRU cache with O(1) operations.",
+          stack: ["C++20", "STL", "GoogleTest"],
+          link: "https://github.com/martinezmarcos/LRUCache",
+        },
+        {
+          id: "bloom-filter",
+          title: "Bloom Filter",
+          typeTag: "C++",
+          tagline: "Probabilistic set membership with zero false negatives and tunable false-positive rate.",
+          stack: ["C++20", "Hashing", "CMake"],
+          link: "https://github.com/martinezmarcos/bloomFilterProject",
+        },
+        {
+          id: "turing-machine",
+          title: "Turing Machine",
+          typeTag: "C++",
+          tagline: "Deterministic Turing machine simulator that runs programs from .tm files.",
+          stack: ["C++20", "Automata"],
+          link: "https://github.com/martinezmarcos/turingMachine",
         },
       ],
     },
@@ -435,22 +396,9 @@ export const translations: Record<Language, Translations> = {
     },
     timelineSection: {
       sectionNum: "04",
-      sectionTag: "Career Progression",
-      title: "Engineering Track Record",
+      sectionTag: "Education",
+      title: "Academic Background",
       items: [
-        {
-          period: "January 2025 — Present",
-          title: "Enterprise Operations Platform",
-          role: "Full Stack & Systems Developer",
-          badge: "Production SaaS",
-          description:
-            "Architected, built, and maintaining the production operations platform utilized daily by multiple manufacturing enterprises.",
-          bullets: [
-            "Engineered 2D sheet cut optimization engine preventing raw material waste across production runs",
-            "Implemented PostgreSQL Row Level Security (RLS) and multi-tenant isolation",
-            "Shipped 14 integrated modules with real-time shop floor synchronization",
-          ],
-        },
         {
           period: "August 2025 — Present",
           title: "System Analyst",
@@ -501,7 +449,7 @@ export const translations: Record<Language, Translations> = {
         "“A clean system is not one that has zero lines of code, but one where every constraint, memory allocation, and concurrency lock can be defended under production pressure.”",
       paragraphs: [
         "I am a Full Stack & Systems Developer based in Argentina, specialized in building software that keeps working after deployment. Trained as a Computer Science Technician through a rigorous 7-year program and currently pursuing a university degree as a System Analyst, most of what I understand about software comes from maintaining systems that businesses rely on for their daily survival.",
-        "My primary production achievement is an enterprise operations platform utilized across multiple production facilities. It is not a demonstration repository — it orchestrates cutting schedules, 2D packing algorithms, raw inventory, purchase orders, and workshop teams. Building software that business owners trust with their daily survival requires defensive architecture and operational rigor.",
+        "Today I work as a software developer at Interd, where I built the company website. I also created Lorma, the SaaS that Interd and Claxon use every day to plan cutting jobs, manage inventory and purchases, and coordinate their workshops, and I co-develop HonyCars, a CRM with an AI chatbot for car dealerships. Building software that businesses trust with their daily operations requires defensive architecture and operational rigor.",
         "My work spans high-level web platforms (React 19, Next.js 16, Node.js, PostgreSQL with Supabase RLS, Redis atomic locks) and low-level algorithmic foundations in C++20 (multithreaded LRU caches, probabilistic Bloom filters, automata theory). Whether designing a 2D packing heuristic or preventing race conditions in high-concurrency booking engines, I value determinism, algorithmic clarity, and measurable performance.",
       ],
     },
@@ -522,10 +470,10 @@ export const translations: Record<Language, Translations> = {
   },
   es: {
     nav: {
-      work: "Inicio",
+      work: "Experiencia",
       projects: "Proyectos",
       skills: "Skills",
-      timeline: "Experiencia",
+      timeline: "Formación",
       about: "Sobre mí",
       contact: "Contacto",
       menu: "Menú",
@@ -536,10 +484,10 @@ export const translations: Record<Language, Translations> = {
       location: "Buenos Aires, AR",
       headline: "Construyendo software que sobrevive a producción real y concurrencia.",
       summary:
-        "Diseño y mantengo una plataforma SaaS multi-tenant en producción activa utilizada diariamente por varias empresas. Mi enfoque de ingeniería une sistemas distribuidos de alta concurrencia (bloqueos atómicos en Redis, PostgreSQL RLS, pgvector RAG) con estructuras de datos y gestión de memoria en C++20.",
+        "Desarrollador de software en Interd. Creé Lorma, un SaaS multi-tenant con el que operan a diario dos empresas de fabricación, y soy codesarrollador de HonyCars, un CRM con chatbot de IA para concesionarias. En paralelo, construyo sistemas de bajo nivel en Rust y C++20.",
       metrics: {
-        companiesValue: "+4",
-        companiesLabel: "Empresas en Producción Diaria",
+        companiesValue: "2",
+        companiesLabel: "Empresas Usan Lorma a Diario",
         lruValue: "O(1)",
         lruLabel: "Caché LRU Amortizado",
         ragValue: "81%",
@@ -547,198 +495,156 @@ export const translations: Record<Language, Translations> = {
         systemsValue: "C++20",
         systemsLabel: "& Next.js Full Stack",
       },
-      ctaProjects: "Ver Proyectos",
+      ctaProjects: "Ver Experiencia",
       ctaContact: "Contactar",
+      downloadCv: "Descargar CV (EN)",
     },
-    featured: {
+    experienceSection: {
       sectionNum: "01",
-      sectionTag: "Plataforma Insignia en Producción",
-      status: "SaaS Empresarial Multi-Tenant — En Uso Diario",
-      title: "Plataforma de Operaciones Industriales",
+      sectionTag: "Experiencia Profesional",
+      title: "Software en producción, usado por empresas reales.",
       subtitle:
-        "ERP multi-tenant y motor de optimización de corte 2D utilizado diariamente por varias empresas",
-      problemTitle: "El Cuello de Botella Industrial",
-      problemText:
-        "Múltiples empresas de manufactura y producción coordinaban históricamente su trabajo mediante planillas desconectadas, órdenes en papel y mensajería manual. El stock de materiales, las órdenes de corte, los presupuestos y las compras carecían de una fuente centralizada, generando desperdicio de materia prima, fricción operativa y nula visibilidad de costos en tiempo real.",
-      solutionTitle: "Solución de Ingeniería",
-      solutionText:
-        "Plataforma web empresarial integrada con 14 módulos. Incluye un motor algorítmico de optimización de corte 2D para empaquetar órdenes de paneles sobre placas estándar, gestión de inventario y proveedores en tiempo real, cotizaciones dinámicas, control de accesos por roles, planificación de planta y sincronización instantánea. Utilizada en producción diaria continua por varias empresas.",
-      decisionsHeader: "Decisiones Arquitectónicas Clave",
-      decisions: [
+        "Productos que construyo y mantengo a diario: un sitio corporativo, un SaaS multi-tenant y un CRM con chatbot de inteligencia artificial.",
+      visit: "Visitar",
+      usedBy: "Lo usan a diario",
+      decisionsHeader: "Decisiones técnicas clave",
+      items: [
         {
-          tag: "ALGORITMO",
-          title: "Motor Algorítmico de Optimización de Corte 2D",
-          description:
-            "Algoritmo de empaquetamiento que distribuye piezas rectangulares sobre placas estándar y calcula metros lineales de tapacantos, minimizando el desperdicio de material antes de enviar órdenes a taller.",
+          id: "interd",
+          company: "Interd",
+          role: "Desarrollador de Software",
+          period: "Actualidad",
+          url: "https://interd.com.ar",
+          urlLabel: "interd.com.ar",
+          badge: "Puesto Actual",
+          summary:
+            "Desarrollador de software en Interd, estudio de Buenos Aires que diseña y fabrica vidrieras, stands, exhibidores y mobiliario comercial para marcas como Chandon y Warsteiner.",
+          bullets: [
+            "Diseñé y desarrollé el sitio web de la empresa, interd.com.ar: estudio, servicios, proceso y portfolio filtrable de proyectos para clientes",
+            "Construí el formulario de contacto y captación de clientes con protección antispam, e imágenes responsive optimizadas",
+            "Desarrollo el software interno con el que opera el estudio día a día (Lorma)",
+          ],
         },
         {
-          tag: "SEGURIDAD",
-          title: "PostgreSQL con Row Level Security (RLS) Estricto",
-          description:
-            "Gestionado vía Prisma ORM en Supabase. El acceso público directo está bloqueado mediante políticas RLS, garantizando que cada lectura y escritura pase por endpoints autenticados.",
+          id: "lorma",
+          company: "Lorma",
+          role: "Creador y Desarrollador Principal",
+          period: "Ene 2025 — Actualidad",
+          url: "https://lorma.site",
+          urlLabel: "lorma.site",
+          badge: "SaaS en Producción",
+          summary:
+            "Creé Lorma, un SaaS multi-tenant para fábricas de muebles que une un ERP y la optimización de corte 2D en una sola plataforma: inventario, proveedores, presupuestos, compras, planificación de producción y flujo de caja en 14 módulos integrados. Cada empresa trabaja en su propio espacio aislado.",
+          clients: ["Interd", "Claxon"],
+          decisions: [
+            {
+              tag: "ALGORITMO",
+              title: "Optimización de corte 2D",
+              description:
+                "Distribuye piezas rectangulares sobre placas estándar y calcula tapacantos, minimizando el desperdicio antes de que la orden llegue al taller.",
+            },
+            {
+              tag: "SEGURIDAD",
+              title: "PostgreSQL con RLS",
+              description:
+                "Prisma sobre Supabase con Row Level Security: cada lectura y escritura pasa por endpoints autenticados.",
+            },
+            {
+              tag: "ACCESOS",
+              title: "Control por roles (RBAC)",
+              description:
+                "Roles ADMIN, VENTAS, DISEÑADOR y OPERARIO. Las tablets de taller solo ven colas de corte y armado.",
+            },
+            {
+              tag: "TIEMPO REAL",
+              title: "Sincronización con planta",
+              description:
+                "Canales broadcast de Supabase Realtime sincronizan colas de trabajo y stock entre dispositivos sin polling.",
+            },
+          ],
+          metrics: [
+            { label: "Empresas", value: "2", subtext: "Interd y Claxon" },
+            { label: "Alcance", value: "14", subtext: "Módulos" },
+            { label: "Sync", value: "Live", subtext: "Tiempo real" },
+          ],
+          stack: ["React 19", "Next.js 16", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Tailwind CSS v4", "Vercel"],
+          preview: { src: "/dashboard-preview.png", alt: "Panel de Lorma", width: 1910, height: 854 },
         },
         {
-          tag: "CONTROL DE ACCESO",
-          title: "Control de Acceso Granular por Roles (RBAC)",
-          description:
-            "Separación estricta entre ADMIN, VENTAS, DISEÑADOR y OPERARIO. Las tablets de taller acceden únicamente a colas de corte y ensamblado, protegiendo márgenes y balances contables.",
-        },
-        {
-          tag: "TIEMPO REAL",
-          title: "Sincronización en Tiempo Real para Planta",
-          description:
-            "Canales broadcast de Supabase Realtime para sincronizar colas de trabajo y movimientos de stock al instante en dispositivos de planta sin realizar polling a la base de datos.",
+          id: "honycars",
+          company: "HonyCars",
+          role: "Codesarrollador",
+          period: "Actualidad",
+          url: "https://honycars.com",
+          urlLabel: "honycars.com",
+          badge: "CRM + IA",
+          summary:
+            "Codesarrollador de HonyCars, un CRM para concesionarias de Argentina que centraliza todas las consultas para que cada lead tenga responsable, respuesta y próximo paso.",
+          bullets: [
+            "Bandeja unificada de consultas de WhatsApp, Instagram, Mercado Libre, email, formularios web y salón, con asignación y seguimiento por vendedor",
+            "“Hony”, un chatbot de IA que responde por WhatsApp con el stock real de la concesionaria, descarta cualquier respuesta con cifras que no estén en sus datos y deriva a una persona cuando se lo piden",
+            "Stock con fotos y precios, presupuestos en PDF y métricas del embudo: tiempo de primera respuesta, ranking del equipo y motivos de venta perdida",
+          ],
         },
       ],
-      metrics: [
-        { label: "Arquitectura", value: "Multi-Tenant", subtext: "En producción continua" },
-        { label: "Alcance", value: "14 Módulos", subtext: "Gestión integral de operaciones" },
-        { label: "Sincronización", value: "Tiempo Real", subtext: "Órdenes y stock al instante" },
-      ],
-      confidentiality:
-        "Sistema empresarial privado — identidades de clientes y métricas operativas protegidas por confidencialidad.",
     },
     projectsSection: {
       sectionNum: "02",
-      sectionTag: "Sistemas Centrales e Ingeniería Algorítmica",
-      title: "Sistemas, Concurrencia e Ingeniería de Bajo Nivel",
-      subtitle:
-        "Arquitecturas deterministas, estructuras de datos multithread en C++ y mecanismos de concurrencia probados en producción.",
-      categories: [
-        { id: "All", label: "Todos" },
-        { id: "Distributed Systems", label: "Sistemas Distribuidos" },
-        { id: "AI & RAG", label: "IA & RAG" },
-        { id: "Low-Level & C++", label: "Bajo Nivel & C++" },
-      ],
-      systemMechanics: "Mecánica del Sistema",
-      viewRepo: "Ver Repositorio en GitHub",
+      sectionTag: "Proyectos Personales",
+      title: "Sistemas e ingeniería de bajo nivel",
+      subtitle: "Proyectos open source donde exploro rendimiento, concurrencia y estructuras de datos.",
+      featuredLabel: "Destacado",
       source: "Código",
-      allRepos: "Ver todos los repositorios open source en GitHub →",
+      allRepos: "Ver todos los repositorios en GitHub →",
       items: [
         {
           id: "llm-inference-engine",
           title: "LLM Inference Engine",
-          category: "Low-Level & C++",
-          categories: ["Low-Level & C++", "AI & RAG"],
-          categoryLabel: "Bajo Nivel & Sistemas",
-          typeTag: "Rust Sin Frameworks",
-          complexity: "Hot Loop Zero-Alloc",
+          typeTag: "Rust",
           featured: true,
-          featuredBadge: "Arquitectura de Sistemas Destacada · Rust Puro",
-          tagline: "Motor de inferencia LLM Transformer de alto rendimiento implementado desde cero en Rust sin frameworks de ML",
-          description:
-            "Diseñado e implementado completamente desde cero en Rust sin frameworks de machine learning (sin PyTorch, Candle ni ONNX). Implementa la infraestructura de sistemas de bajo nivel necesaria para ejecutar modelos Transformer decoder-only en CPU: parser binario GGUF v2/v3 con mapeo directo de memoria (mmap), runtime tensorial multidimensional optimizado para caché, bucle de decodificación autorregresivo con cero asignaciones en el heap y ejecución multithread con Rayon.",
-          highlights: [
-            "Bucle de Decodificación Zero-Alloc",
-            "Parser GGUF con mmap de Copia Cero",
-            "Caché KV Autorregresivo O(1)",
-            "Matmul Multithread con Rayon",
-          ],
-          architectureBreakdown: [
-            { label: "Carga del Modelo", detail: "Parser binario GGUF v2/v3 con mmap de copia cero" },
-            { label: "Gestión de Memoria", detail: "Bucle de decodificación sin asignaciones en heap" },
-            { label: "Operaciones Transformer", detail: "GQA, embeddings RoPE, RMSNorm y FFN SwiGLU" },
-            { label: "Aceleración de Atención", detail: "Caché KV autorregresivo O(1) que evita recomputación" },
-            { label: "Cómputo Paralelo", detail: "Kernels tensoriales y matmul multithread con Rayon" },
-            { label: "Cuantización", detail: "Bloques INT8 (Q8_0) e INT4 (Q4_0) con dot products dedicados" },
-          ],
-          stack: ["Rust", "GGUF", "Rayon", "mmap", "Transformer", "SIMD", "KV Cache", "BPE Tokenizer"],
+          tagline: "Motor de inferencia Transformer escrito desde cero en Rust, sin frameworks de ML: parser GGUF con mmap, caché KV y cuantización INT8/INT4.",
+          stack: ["Rust", "Rayon", "GGUF", "SIMD"],
           link: "https://github.com/martinezmarcos/LLM-Inference-Engine",
-        },
-        {
-          id: "lru-cache",
-          title: "LRU Cache",
-          category: "Low-Level & C++",
-          categoryLabel: "Bajo Nivel & C++",
-          typeTag: "Concurrente C++20",
-          complexity: "O(1) Amortizado",
-          tagline: "Caché LRU multithread en C++20 con operaciones O(1)",
-          description:
-            "Caché en memoria thread-safe implementado en C++20 moderno. Combina una lista doblemente enlazada para el orden de desalojo en tiempo constante con una tabla hash para búsquedas instantáneas, protegido por bloqueos de lectura/escritura de granularidad fina.",
-          architectureBreakdown: [
-            { label: "Complejidad Temporal", detail: "O(1) en operaciones get y put" },
-            { label: "Sincronización", detail: "std::shared_mutex para lecturas concurrentes" },
-            { label: "Topología de Memoria", detail: "std::list + std::unordered_map" },
-            { label: "Estándar", detail: "Compilado con -std=c++20 y sanitizers estrictos" },
-          ],
-          stack: ["C++20", "STL", "Concurrencia", "CMake", "GoogleTest"],
-          link: "https://github.com/martinezmarcos/LRUCache",
-        },
-        {
-          id: "bloom-filter",
-          title: "Bloom Filter",
-          category: "Low-Level & C++",
-          categoryLabel: "Bajo Nivel & C++",
-          typeTag: "Estructura Probabilística",
-          complexity: "Límites Hash O(k)",
-          tagline: "Estructura probabilística de memoria eficiente sin falsos negativos",
-          description:
-            "Estructura probabilística de comprobación de pertenencia de alto rendimiento en C++. Utiliza MurmurHash3 y técnicas de doble hashing para optimizar la probabilidad de falsos positivos bajo límites estrictos de memoria.",
-          architectureBreakdown: [
-            { label: "Estrategia Hash", detail: "Doble hashing Kirsch-Mitzenmacher" },
-            { label: "Vector de Bits", detail: "std::vector<bool> para representación compacta" },
-            { label: "Falsos Negativos", detail: "0% garantizado por demostración matemática" },
-            { label: "Verificación", detail: "Pruebas empíricas de distribución de colisiones" },
-          ],
-          stack: ["C++20", "MurmurHash3", "Algoritmos", "CMake", "Catch2"],
-          link: "https://github.com/martinezmarcos/bloomFilterProject",
-        },
-        {
-          id: "turing-machine",
-          title: "Turing Machine",
-          category: "Low-Level & C++",
-          categoryLabel: "Bajo Nivel & C++",
-          typeTag: "Autómatas & Computación",
-          complexity: "MT Determinista",
-          tagline: "Simulador determinista de autómatas teóricos en C++ moderno",
-          description:
-            "Simulador completo de una Máquina de Turing determinista de cinta única. Lee grafos de transición declarativos, gestiona una cinta bi-infinita dinámica y ejecuta transiciones paso a paso con telemetría de traza.",
-          architectureBreakdown: [
-            { label: "Modelo de Cinta", detail: "Cinta bidireccional dinámica con autoexpansión" },
-            { label: "Motor de Transición", detail: "Matriz de búsqueda con despacho en O(1)" },
-            { label: "Depuración", detail: "Snapshots de estado y registro de traza paso a paso" },
-            { label: "Estándar", detail: "Cumplimiento estricto del estándar C++20" },
-          ],
-          stack: ["C++20", "Teoría de Autómatas", "Computación", "CMake"],
-          link: "https://github.com/martinezmarcos/turingMachine",
         },
         {
           id: "cancha-directa",
           title: "Cancha Directa",
-          category: "Distributed Systems",
-          categoryLabel: "Sistemas Distribuidos",
-          typeTag: "Full Stack & Concurrencia",
-          complexity: "Bloqueos Sub-50ms",
-          tagline: "Plataforma deportiva de alta concurrencia con bloqueos atómicos en Redis",
-          description:
-            "Motor de reservas en producción diseñado para prevenir la doble asignación de turnos durante picos de tráfico. Implementa bloqueos atómicos en Redis con expiración TTL, transacciones aisladas en PostgreSQL y sincronización en vivo.",
-          architectureBreakdown: [
-            { label: "Concurrencia", detail: "Bloqueos distribuidos en Redis con TTL determinista" },
-            { label: "Base de Datos", detail: "PostgreSQL con aislamiento a nivel de fila" },
-            { label: "Frontend", detail: "Next.js App Router con actualizaciones optimistas" },
-            { label: "Edge Gateway", detail: "Upstash Redis con latencia regional sub-15ms" },
-          ],
-          stack: ["Next.js", "TypeScript", "Redis", "PostgreSQL", "Tailwind CSS", "Prisma"],
+          typeTag: "Sistemas Distribuidos",
+          tagline: "Motor de reservas que evita turnos duplicados con bloqueos atómicos en Redis y una restricción de PostgreSQL como respaldo.",
+          stack: ["Next.js", "Redis", "PostgreSQL"],
           link: "https://github.com/martinezmarcos/cancha-directa",
         },
         {
           id: "claude-docs",
           title: "Claude Docs Navigator",
-          category: "AI & RAG",
-          categoryLabel: "IA & RAG",
-          typeTag: "Búsqueda Vectorial & Retrieval",
-          complexity: "Recall@5: 81%",
-          tagline: "Buscador semántico RAG sobre la documentación de Anthropic con pgvector",
-          description:
-            "Sistema de recuperación densa que procesa la documentación oficial de Anthropic, divide el contenido en chunks semánticos de markdown, genera embeddings vectoriales y ejecuta consultas de similitud coseno con re-ranking híbrido.",
-          architectureBreakdown: [
-            { label: "Motor Vectorial", detail: "pgvector con índices HNSW para consultas sub-20ms" },
-            { label: "Embeddings", detail: "text-embedding-3-small (espacio de 1536 dimensiones)" },
-            { label: "Chunking", detail: "Segmentación consciente de la estructura AST de markdown" },
-            { label: "Precisión", detail: "81% Recall@5 evaluado sobre 120 consultas sintéticas" },
-          ],
-          stack: ["Next.js", "TypeScript", "PostgreSQL", "pgvector", "OpenAI API", "Tailwind CSS"],
+          typeTag: "IA & RAG",
+          tagline: "Asistente RAG sobre la documentación de Anthropic con búsqueda en pgvector y respuestas citadas. 81% Recall@5.",
+          stack: ["Next.js", "pgvector", "PostgreSQL"],
           link: "https://github.com/martinezmarcos/rag",
+        },
+        {
+          id: "lru-cache",
+          title: "LRU Cache",
+          typeTag: "C++20",
+          tagline: "Caché LRU thread-safe con operaciones O(1).",
+          stack: ["C++20", "STL", "GoogleTest"],
+          link: "https://github.com/martinezmarcos/LRUCache",
+        },
+        {
+          id: "bloom-filter",
+          title: "Bloom Filter",
+          typeTag: "C++",
+          tagline: "Pertenencia probabilística a conjuntos sin falsos negativos y con tasa de falsos positivos ajustable.",
+          stack: ["C++20", "Hashing", "CMake"],
+          link: "https://github.com/martinezmarcos/bloomFilterProject",
+        },
+        {
+          id: "turing-machine",
+          title: "Turing Machine",
+          typeTag: "C++",
+          tagline: "Simulador de máquina de Turing determinista que ejecuta programas desde archivos .tm.",
+          stack: ["C++20", "Autómatas"],
+          link: "https://github.com/martinezmarcos/turingMachine",
         },
       ],
     },
@@ -806,22 +712,9 @@ export const translations: Record<Language, Translations> = {
     },
     timelineSection: {
       sectionNum: "04",
-      sectionTag: "Progresión Profesional",
-      title: "Trayectoria de Ingeniería",
+      sectionTag: "Formación",
+      title: "Formación Académica",
       items: [
-        {
-          period: "Enero 2025 — Presente",
-          title: "Plataforma de Operaciones Industriales",
-          role: "Desarrollador Full Stack y de Sistemas",
-          badge: "SaaS en Producción",
-          description:
-            "Diseñé, construí y mantengo la plataforma de operaciones en producción utilizada diariamente por varias empresas industriales.",
-          bullets: [
-            "Diseñé el motor de optimización de corte 2D para eliminar el desperdicio de materia prima en tiradas de producción",
-            "Implementé Row Level Security (RLS) en PostgreSQL con aislamiento multi-tenant estricto",
-            "Desarrollé 14 módulos integrados con sincronización de planta en tiempo real",
-          ],
-        },
         {
           period: "Agosto 2025 — Presente",
           title: "Analista en Sistemas",
@@ -872,7 +765,7 @@ export const translations: Record<Language, Translations> = {
         "“Un sistema limpio no es aquel que tiene cero líneas de código, sino aquel donde cada restricción, asignación de memoria y bloqueo de concurrencia puede ser defendido bajo la presión de producción.”",
       paragraphs: [
         "Soy Desarrollador Full Stack & Sistemas radicado en Argentina, especializado en construir software que sigue funcionando después del despliegue. Graduado como Técnico en Informática tras una formación intensiva de 7 años y cursando la carrera universitaria de Analista en Sistemas, la mayor parte de lo que entiendo sobre software proviene de mantener sistemas de los cuales dependen empresas para operar a diario.",
-        "Mi mayor logro en producción es una plataforma de operaciones utilizada activamente por varias empresas. No es un repositorio de demostración: orquesta programas de corte, algoritmos de empaquetamiento 2D, inventario de materiales, compras y equipos de taller. Construir software en el cual empresas depositan su operación diaria exige rigor defensivo y precisión.",
+        "Hoy trabajo como desarrollador de software en Interd, donde hice el sitio web de la empresa. Además creé Lorma, el SaaS con el que Interd y Claxon planifican cortes, gestionan inventario y compras y coordinan sus talleres todos los días, y soy codesarrollador de HonyCars, un CRM con chatbot de IA para concesionarias. Construir software del que dependen empresas para operar a diario exige rigor defensivo y precisión.",
         "Mi trabajo abarca desde plataformas web de alto nivel (React 19, Next.js 16, Node.js, PostgreSQL con Supabase RLS, bloqueos atómicos en Redis) hasta bases algorítmicas de bajo nivel en C++20 (cachés LRU concurrentes, Bloom filters probabilísticos, teoría de autómatas). Ya sea optimizando un algoritmo de corte 2D o evitando race conditions en motores de reservas de alta concurrencia, valoro el determinismo, la claridad algorítmica y el rendimiento medible.",
       ],
     },

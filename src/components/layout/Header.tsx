@@ -12,7 +12,7 @@ export function Header() {
   const { lang, toggleLang, t } = useLanguage();
 
   const navItems = [
-    { href: "#featured", label: t.nav.work },
+    { href: "#experience", label: t.nav.work },
     { href: "#projects", label: t.nav.projects },
     { href: "#skills", label: t.nav.skills },
     { href: "#timeline", label: t.nav.timeline },

@@ -2,7 +2,6 @@
 
 import { siteConfig } from "@/lib/site-config";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
-import { FeaturedProject } from "@/components/sections/work/FeaturedProject";
 import { OtherProjects } from "@/components/sections/work/OtherProjects";
 import { useLanguage } from "@/lib/language-context";
 
@@ -10,12 +9,11 @@ export function Work() {
   const { t } = useLanguage();
 
   return (
-    <section className="border-b border-zinc-200/80 bg-white">
-      <div className="mx-auto max-w-content px-6 py-24 sm:px-10 sm:py-32">
-        <FeaturedProject />
+    <section className="border-b border-zinc-200/80 bg-zinc-50/40">
+      <div className="mx-auto max-w-content px-6 py-20 sm:px-10 sm:py-24">
         <OtherProjects />
 
-        <div className="mt-20 border-t border-zinc-200/80 pt-8 text-center sm:text-left">
+        <div className="mt-10 text-center sm:text-left">
           <UnderlineLink
             href={siteConfig.social.github}
             target="_blank"

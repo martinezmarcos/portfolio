@@ -5,10 +5,11 @@ export const siteConfig = {
   headline: "I build reliable software for real-world production and distributed systems.",
   title: "Marcos Martinez Jaime — Full Stack & Systems Developer",
   description:
-    "Full Stack & Systems Developer based in Argentina. Builder of a production multi-tenant SaaS for furniture manufacturing, distributed locks with Redis/PostgreSQL, RAG architectures with pgvector, and low-level data structures in C++.",
+    "Full Stack & Systems Developer based in Argentina. Software developer at Interd, creator of Lorma (multi-tenant SaaS for furniture manufacturers) and co-developer of HonyCars (CRM with an AI chatbot for car dealerships).",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://marcosmartinez.dev",
   locale: "en_US",
   email: "martinezmarcostrabajo@gmail.com",
+  cvUrl: "/CV_MarcosMartinezJaime_EN.pdf",
   social: {
     github: "https://github.com/martinezmarcos",
     linkedin: "https://www.linkedin.com/in/martinez-jaime-marcos/",
@@ -18,6 +19,7 @@ export const siteConfig = {
 } as const;
 
 export const navLinks = [
+  { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
   { href: "#timeline", label: "Timeline" },
