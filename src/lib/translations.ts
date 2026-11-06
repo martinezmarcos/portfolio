@@ -35,13 +35,14 @@ export type ExperienceItem = {
   url: string;
   urlLabel: string;
   badge: string;
+  tagline: string;
   summary: string;
+  highlights: string[];
   bullets?: string[];
   clients?: string[];
   stack?: string[];
   decisions?: Decision[];
   metrics?: Metric[];
-  preview?: { src: string; alt: string; width: number; height: number };
 };
 
 export type SkillItem = {
@@ -189,7 +190,7 @@ export const translations: Record<Language, Translations> = {
       title: "Software in production, used by real businesses.",
       subtitle:
         "Products I build and maintain every day: a company website, a multi-tenant SaaS, and a CRM with an AI chatbot.",
-      visit: "Visit",
+      visit: "Visit site",
       usedBy: "Used daily by",
       decisionsHeader: "Key technical decisions",
       items: [
@@ -201,6 +202,8 @@ export const translations: Record<Language, Translations> = {
           url: "https://interd.com.ar",
           urlLabel: "interd.com.ar",
           badge: "Current Role",
+          tagline: "Website and internal software for a commercial design studio.",
+          highlights: ["Company website", "Filterable portfolio", "Lead capture", "Internal software"],
           summary:
             "Software developer at Interd, a Buenos Aires studio that designs and manufactures shop windows, stands, displays, and commercial furniture for brands such as Chandon and Warsteiner.",
           bullets: [
@@ -217,6 +220,8 @@ export const translations: Record<Language, Translations> = {
           url: "https://lorma.site",
           urlLabel: "lorma.site",
           badge: "Production SaaS",
+          tagline: "ERP and 2D cutting optimization for furniture manufacturers.",
+          highlights: ["Multi-tenant", "2D cutting engine", "14 modules", "Real-time", "RBAC"],
           summary:
             "I created Lorma, a multi-tenant SaaS for furniture manufacturers that combines an ERP and 2D cutting optimization in one platform: inventory, suppliers, quotes, purchase orders, production scheduling, and cash flow across 14 integrated modules. Each company works in its own isolated workspace.",
           clients: ["Interd", "Claxon"],
@@ -252,7 +257,6 @@ export const translations: Record<Language, Translations> = {
             { label: "Sync", value: "Live", subtext: "Real-time" },
           ],
           stack: ["React 19", "Next.js 16", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Tailwind CSS v4", "Vercel"],
-          preview: { src: "/dashboard-preview.png", alt: "Lorma dashboard", width: 1910, height: 854 },
         },
         {
           id: "honycars",
@@ -262,6 +266,8 @@ export const translations: Record<Language, Translations> = {
           url: "https://honycars.com",
           urlLabel: "honycars.com",
           badge: "CRM + AI",
+          tagline: "CRM with an AI chatbot that answers customers on WhatsApp.",
+          highlights: ["WhatsApp", "Instagram", "Mercado Libre", "AI chatbot", "PDF quotes", "Funnel metrics"],
           summary:
             "Co-developer of HonyCars, a CRM for car dealerships in Argentina that centralizes every inquiry so each lead has an owner, a response, and a next step.",
           bullets: [
@@ -505,7 +511,7 @@ export const translations: Record<Language, Translations> = {
       title: "Software en producción, usado por empresas reales.",
       subtitle:
         "Productos que construyo y mantengo a diario: un sitio corporativo, un SaaS multi-tenant y un CRM con chatbot de inteligencia artificial.",
-      visit: "Visitar",
+      visit: "Visitar sitio",
       usedBy: "Lo usan a diario",
       decisionsHeader: "Decisiones técnicas clave",
       items: [
@@ -517,6 +523,8 @@ export const translations: Record<Language, Translations> = {
           url: "https://interd.com.ar",
           urlLabel: "interd.com.ar",
           badge: "Puesto Actual",
+          tagline: "Sitio web y software interno para un estudio de diseño comercial.",
+          highlights: ["Sitio corporativo", "Portfolio filtrable", "Captación de clientes", "Software interno"],
           summary:
             "Desarrollador de software en Interd, estudio de Buenos Aires que diseña y fabrica vidrieras, stands, exhibidores y mobiliario comercial para marcas como Chandon y Warsteiner.",
           bullets: [
@@ -533,6 +541,8 @@ export const translations: Record<Language, Translations> = {
           url: "https://lorma.site",
           urlLabel: "lorma.site",
           badge: "SaaS en Producción",
+          tagline: "ERP y optimización de corte 2D para fábricas de muebles.",
+          highlights: ["Multi-tenant", "Motor de corte 2D", "14 módulos", "Tiempo real", "RBAC"],
           summary:
             "Creé Lorma, un SaaS multi-tenant para fábricas de muebles que une un ERP y la optimización de corte 2D en una sola plataforma: inventario, proveedores, presupuestos, compras, planificación de producción y flujo de caja en 14 módulos integrados. Cada empresa trabaja en su propio espacio aislado.",
           clients: ["Interd", "Claxon"],
@@ -568,7 +578,6 @@ export const translations: Record<Language, Translations> = {
             { label: "Sync", value: "Live", subtext: "Tiempo real" },
           ],
           stack: ["React 19", "Next.js 16", "Node.js", "Prisma", "PostgreSQL", "Supabase Realtime", "Tailwind CSS v4", "Vercel"],
-          preview: { src: "/dashboard-preview.png", alt: "Panel de Lorma", width: 1910, height: 854 },
         },
         {
           id: "honycars",
@@ -578,6 +587,8 @@ export const translations: Record<Language, Translations> = {
           url: "https://honycars.com",
           urlLabel: "honycars.com",
           badge: "CRM + IA",
+          tagline: "CRM con chatbot de IA que atiende clientes por WhatsApp.",
+          highlights: ["WhatsApp", "Instagram", "Mercado Libre", "Chatbot IA", "Presupuestos PDF", "Métricas de embudo"],
           summary:
             "Codesarrollador de HonyCars, un CRM para concesionarias de Argentina que centraliza todas las consultas para que cada lead tenga responsable, respuesta y próximo paso.",
           bullets: [
