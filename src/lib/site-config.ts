@@ -6,7 +6,7 @@ export const siteConfig = {
   title: "Marcos Martinez Jaime — Full Stack & Systems Developer",
   description:
     "Full Stack & Systems Developer based in Argentina. Software developer at Interd, creator of Lorma (multi-tenant SaaS for manufacturing and production companies) and co-developer of HonyCars (CRM with an AI chatbot for car dealerships).",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://marcosmartinez.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.martinezjaime.dev",
   locale: "en_US",
   email: "martinezmarcostrabajo@gmail.com",
   social: {
